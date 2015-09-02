@@ -62,6 +62,7 @@
 				.println("****************************************************"
 						+ this.getClass().getName());
 		if(userBean!=null){
+			System.out.println("user_id: " + userBean.getUser_id());
 			System.out.println(userBean.getAccount_id());
 			System.out.println(userBean.getGender());
 			System.out.println(userBean.getMail());

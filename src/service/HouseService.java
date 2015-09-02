@@ -18,7 +18,7 @@ public class HouseService {
 	public boolean releaseHouse(HouseBean houseBean) {
 		// TODO Auto-generated method stub
 		HouseDaoImpl houseDao = new HouseDaoImpl();
-		if (houseDao.newHouse(houseBean)) {
+		if (houseDao.insertAHouse(houseBean)) {
 			return true;
 		}
 

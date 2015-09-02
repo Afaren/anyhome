@@ -136,12 +136,16 @@ public class UserDaoImpl implements UserDao {
 				userBean = new UserBean();// 保存查询得到的记录
 
 				// 这里的疑问在于，可能password跟phone是可以不写上去的，先不考虑
+				userBean.setUser_id(rSet.getInt("user_id"));
 				userBean.setAccount_id(rSet.getInt("account_id"));
 				userBean.setUsername(rSet.getString("username"));
 				userBean.setPassword(rSet.getString("password"));
 				userBean.setPhone(rSet.getString("phone"));
 				userBean.setMail(rSet.getString("mail"));
 				userBean.setGender(rSet.getString("gender"));
+				userBean.setUser_type(rSet.getInt("user_type"));
+
+				// 这里要返回完整的userBean，不然后面用到莫一个属性时就找不到了
 			}
 			//
 			// return userBean;// 用户存在，返回填充完整的UserBean（这里未考虑管理员登录的情况）

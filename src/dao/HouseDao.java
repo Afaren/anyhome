@@ -14,5 +14,7 @@ import entity.HouseBean;
  */
 public interface HouseDao {
 
-	public boolean newHouse(HouseBean houseBean);
+	// public boolean newHouse(HouseBean houseBean);
+	// 插入一条记录
+	public boolean insertAHouse(HouseBean houseBean);
 }

@@ -14,7 +14,7 @@ public class UserBean {
 
 	// user表设计时，有一些属性是为空的，所以这个bean可以不完全填充？
 	private int user_id;
-	private final int user_type = 0;
+	private int user_type;
 	private int account_id;
 	private String username;
 	private String password;
@@ -80,6 +80,10 @@ public class UserBean {
 
 	public void setUser_id(int user_id) {
 		this.user_id = user_id;
+	}
+
+	public void setUser_type(int user_type) {
+		this.user_type = user_type;
 	}
 
 }

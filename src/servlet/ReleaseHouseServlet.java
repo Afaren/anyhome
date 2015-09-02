@@ -110,6 +110,8 @@ public class ReleaseHouseServlet extends HttpServlet {
 		} else {
 			out.print("<h1>无法发布房屋</h1>");
 
+			// 这里应该跳转到主页，现在先将主要的业务逻辑写好，不管这些
+			// response.sendRedirect("home.jsp");
 		}
 
 	}
