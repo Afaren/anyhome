@@ -1,0 +1,110 @@
+.slogan
+{
+	font-size: 20px;
+	border-style: none;
+	background-color: silver;
+	opacity: 0.7;
+}
+#title
+{
+	font-size: 17px;
+}
+li
+{
+	margin-top: 15px;
+}
+.btn-default
+{
+	width: 450px;
+	height: 28px;
+}
+form
+{
+	margin-left: 100px;
+	position: relative;
+}
+.info
+{
+	margin-top: -23px;
+	margin-left: 95px;
+	position: absolute;
+}
+.info
+{
+	margin-top: -25px;
+}
+textarea:invalid,textarea:focus:invalid 
+    {
+      height: 100px;
+      border: 1px solid;
+    }
+textarea:valid
+       {
+        border: 1px solid;
+      }
+      .form-group 
+      {
+        position: relative;
+      }
+      .form-group .fa 
+      {
+        width: 40px;
+        height: 40px;
+        display: none;
+        position: absolute;
+        margin-top: -5px;
+        left:580;
+        font-size: 18px;
+        line-height: 40px;
+        text-align: center;
+      }
+      .form-group textarea:invalid~.fa-times-circle,
+      .form-group textarea:focus:invalid~.fa-times-circle 
+      {
+        display: inline-block;
+        color: #d45a68;
+      }
+      .form-group textarea:valid~.fa-check-circle {
+        display: inline-block;
+        color: #077;
+      }
+      /*.form-group i 
+      {
+        display: inline-block;
+        color: #077;
+      }*/
+input:invalid,input:focus:invalid 
+    {
+      border: 1px solid;
+    }
+input:valid
+       {
+        border: 1px solid;
+      }
+      .form-group 
+      {
+        position: relative;
+      }
+      .form-group .fa 
+      {
+        width: 40px;
+        height: 40px;
+        display: none;
+        position: absolute;
+        margin-top: -5px;
+        left:580;
+        font-size: 18px;
+        line-height: 40px;
+        text-align: center;
+      }
+      .form-group input:invalid~.fa-times-circle,
+      .form-group input:focus:invalid~.fa-times-circle 
+      {
+        display: inline-block;
+        color: #d45a68;
+      }
+      .form-group input:valid~.fa-check-circle {
+        display: inline-block;
+        color: #077;
+      }
+
