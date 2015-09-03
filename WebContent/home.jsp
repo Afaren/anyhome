@@ -9,8 +9,8 @@
 	
 	<link href="css/bootstrap.css" type="text/css" rel="stylesheet"/>
 
-	<link href="js/bootstrap-datetimepicker-master/sample in bootstrap v2/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="js/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+	<link href="bootstrap-datetimepicker-master/sample in bootstrap v2/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
 
 	<link rel="stylesheet" type="text/css" href="css/mainScreen.css"><!-- Afar修改了文件路径 -->
 
@@ -52,10 +52,7 @@
 </head>
 <body onload = "image()">
  
-	<%-- 
-	<jsp:useBean id="userBean" class="entity.UserBean" scope="request"/>
-	--%>
-	<%-- <jsp:getProperty name="userBean" property="" --%>
+	
 	<%
 			UserBean userBean = (UserBean)request.getSession().getAttribute("loginedUser");
 		System.out
@@ -106,10 +103,10 @@
 			 style = "height:46px;width:145px">
 			<input id = "stay" size="16" type="text" value="退房日期" readonly class="form_datetime"
 			 style = "height:46px;width:145px">
-			<script type="text/javascript" src="js/bootstrap-datetimepicker-master/sample in bootstrap v2/jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
-            <script type="text/javascript" src="js/bootstrap-datetimepicker-master/sample in bootstrap v2/bootstrap/js/bootstrap.min.js"></script>
-            <script type="text/javascript" src="js/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
-            <script type="text/javascript" src="js/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
+			<script type="text/javascript" src="bootstrap-datetimepicker-master/sample in bootstrap v2/jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
+            <script type="text/javascript" src="bootstrap-datetimepicker-master/sample in bootstrap v2/bootstrap/js/bootstrap.min.js"></script>
+            <script type="text/javascript" src="bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+            <script type="text/javascript" src="bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
 			<script type="text/javascript">
 			    $(".form_datetime").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
 			</script> 
