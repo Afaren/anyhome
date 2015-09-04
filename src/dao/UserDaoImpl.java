@@ -161,4 +161,14 @@ public class UserDaoImpl implements UserDao {
 		// return null;
 		return userBean;// 用户存在，返回填充完整的UserBean；不存在的话，UserBean没有填充，还是NULL（这里未考虑管理员登录的情况）
 	}
+
+	@Override
+	/*
+	 * 此更新操作涉及两张表 user & account
+	 */
+	public boolean updateMailGenderAccount_num(String mail, String gender,
+			String account_num) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

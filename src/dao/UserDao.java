@@ -14,6 +14,9 @@ import entity.UserBean;
  */
 public interface UserDao {
 
+	public boolean updateMailGenderAccount_num(String mail, String gender,
+			String account_num);
+
 	public boolean isValidUser(String username);
 
 	public boolean insertUser(UserBean user);

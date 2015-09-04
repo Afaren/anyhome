@@ -11,10 +11,10 @@ package entity;
  * 
  */
 class AccountStates {
-	private static final int PAY = 1;
-	private static final int RECEIVE_REFUND = 2;
-	private static final int RECEIVE = 3;
-	private static final int HOST_REFUND = 4;
+	public static final int PAY = 1;
+	public static final int RECEIVE_REFUND = 2;
+	public static final int RECEIVE = 3;
+	public static final int HOST_REFUND = 4;
 }
 
 public class AccountBean {

@@ -55,4 +55,10 @@ public class UserService {
 		return false;
 	}
 
+	public UserBean resetInfo(UserBean user) {
+		// TODO Auto-generated method stub
+
+		return null;
+	}
+
 }

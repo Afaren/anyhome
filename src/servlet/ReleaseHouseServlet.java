@@ -36,7 +36,12 @@ public class ReleaseHouseServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		processRequest(request, response);
+		try {
+			processRequest(request, response);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -47,11 +52,17 @@ public class ReleaseHouseServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		processRequest(request, response);
+		try {
+			processRequest(request, response);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	private void processRequest(HttpServletRequest request,
-			HttpServletResponse response) throws IOException {
+			HttpServletResponse response) throws IOException,
+			InterruptedException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
@@ -65,13 +76,18 @@ public class ReleaseHouseServlet extends HttpServlet {
 		// 5. price price
 		String address = request.getParameter("s_province").trim()
 				+ request.getParameter("s_city").trim()
-				+ request.getParameter("s_country").trim();
+				+ request.getParameter("s_country").trim()
+				+ request.getParameter("s_address").trim();
+
 		String description = request.getParameter("description");
 		String photo = request.getParameter("photo");
 		String house_title = request.getParameter("house_title");
 		String price = request.getParameter("price");
-		System.out.println("s_province: " + request.getParameter("s_province"));
-		out.print("s_province: " + request.getParameter("s_province"));
+
+		// System.out.println("s_province: " +
+		// request.getParameter("s_province"));
+		// out.print("s_province: " + request.getParameter("s_province")
+		// + request.getParameter("s_address"));
 
 		System.out.println("address: " + address);
 		System.out.println("description: " + description);
@@ -106,7 +122,13 @@ public class ReleaseHouseServlet extends HttpServlet {
 		HouseService houseService = new HouseService();
 		if (houseService.releaseHouse(houseBean)) {
 			// 成功发布房屋，跳转到房屋管理页面
-			response.sendRedirect("houseCenter.jsp");
+			// 修改为跳转到主页
+			out.print("<h1>成功发布房屋，等待审核</h1>");
+
+			Thread.sleep(2300);
+			// Thread.currentThread().sleep(2300);
+
+			response.sendRedirect("home.jsp");
 		} else {
 			out.print("<h1>无法发布房屋</h1>");
 

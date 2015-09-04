@@ -1,3 +1,6 @@
+<%@page import="entity.UserBean"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -106,40 +109,65 @@ function checkPhoneNumber()
 </script>
 </head>
 <body>
-	<div id="userInfo" align = "">
+				${sessionScope.loginedUser }<!-- 这里出不了详细的内容 -->
+
+<%
+			
+			UserBean userBean = (UserBean)request.getSession().getAttribute("loginedUser");
+			System.out
+				.println("****************************************************"
+						+ this.getClass().getName());
+			if(userBean!=null){
+			System.out.println("user_id: " + userBean.getUser_id());
+			System.out.println(userBean.getAccount_id());
+			System.out.println(userBean.getGender());
+			System.out.println(userBean.getMail());
+			System.out.println(userBean.getPassword());
+			System.out.println(userBean.getPhone());
+			System.out.println(userBean.getUser_type());
+			System.out.println(userBean.getUsername());
+			}
+			System.out
+				.println("****************************************************"
+						+ this.getClass().getName());
+%>
+
+
+
+<!--点击submit提交数据时，应该顺便刷新页面  -->
+
+
+<form action="ResetUserInfoServlet" method="post">
+
+	<div id="userInfo" align = "center">
 	<h1>用户信息</h1>
     <div class="format">
-    用户名：
-    <input id="userName" class="input" type="text" value="" onblur="checkUserName()" />
+    用户名： ${sessionScope.loginedUser.username } 
 	<div id="tip"></div>
     </div>
-	
-	<div class="format">密&nbsp;&nbsp;&nbsp;码：
-    <input id="password" class="input" type="password" value="" onblur="checkPassword()" />
-	<div id="tip2"></div>
+    
+	<div class="format">
+    电&nbsp;&nbsp;&nbsp;话：${sessionScope.loginedUser.phone }
+	<div id="tip4"></div>
     </div>
 	
-	<div class="format">性&nbsp;&nbsp;&nbsp;别：
-    <input class="input" name="sex" type="radio" value="male" />男&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<input name="sex" type="radio" value="female" />女
+	<div class="format">性&nbsp;&nbsp;&nbsp;别：&nbsp;&nbsp;&nbsp;
+    <input type="radio"  name="gender" class="input"  value="male"  (${sessionScope.loginedUser.gender}) == "male" ? "checked" : "" />男&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<input type="radio"  name="gender" value="female"  ${(sessionScope.loginedUser.gender == "female" )? "checked" : "" } />女
 	<div id="tip3"></div>
     </div>
 
     <div class="format">
     邮&nbsp;&nbsp;&nbsp;箱：
-    <input id="Email" class="input" type="text" value=""  onblur="checkEmail()"/>
+    <input name="mail" id="Email" class="input" type="text" value="${sessionScope.loginedUser.mail }"  onblur="checkEmail()"/>
 	<div id="tip3"></div>
     </div>
 	
-	<div class="format">
-    电&nbsp;&nbsp;&nbsp;话：
-    <input id="phoneNumber" class="input" type="text" value=""  onblur="checkPhoneNumber()"/>
-	<div id="tip4"></div>
-    </div>
+	
 
     <div class="format">
     账&nbsp;&nbsp;&nbsp;号：
-    <input id="accountNumber" class="input" type="text" value="" onblur="checkAccountNumber()" />
+    <input name="account_num"  id="accountNumber" class="input" type="text" value="${sessionScope.account_num }" onblur="checkAccountNumber()" />
 	<div id="tip5"></div>
     </div>
 	
@@ -149,5 +177,6 @@ function checkPhoneNumber()
     </div>
 
   </div>
+  </form>
 </body>
 </html>
