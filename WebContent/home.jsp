@@ -96,12 +96,12 @@
 		</div>
 
 		<form action = " " method = " " class = "formOne">
-			<input id = "location" placeholder = "您想去哪里" type = "text"
+			<input name="where" id = "location" placeholder = "您想去哪里" type = "text"
 				style = "height:46px;width:320px">			 
          
-			<input id = "stay" size="16" type="text" value="入住日期" readonly class="form_datetime"
+			<input name="start_time" id = "stay" size="16" type="text" value="入住日期" readonly class="form_datetime"
 			 style = "height:46px;width:145px">
-			<input id = "stay" size="16" type="text" value="退房日期" readonly class="form_datetime"
+			<input name="end_time" id = "stay" size="16" type="text" value="退房日期" readonly class="form_datetime"
 			 style = "height:46px;width:145px">
 			<script type="text/javascript" src="bootstrap-datetimepicker-master/sample in bootstrap v2/jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
             <script type="text/javascript" src="bootstrap-datetimepicker-master/sample in bootstrap v2/bootstrap/js/bootstrap.min.js"></script>

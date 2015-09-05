@@ -20,14 +20,17 @@
 						<th>序号</th>
 						<th>标题</th>
 						<th>价格</th>
+						<th>状态</th>
 						<th>地址</th>
 						<th>房屋描述</th>
+						
 				</tr>
 						<c:forEach var="house" items="${houseList }" varStatus="s">
 				 <tr>
 				 					<td>s</td>
 									<td>${house.house_title }</td>
 									<td>${house.price }</td>
+									<td>${house.states }
 									<td>${house.address }</td>
 									<td>${house.description }</td>
 				</tr>
