@@ -8,6 +8,6 @@
 </head>
 <body>
 	<h1>管理员页面</h1>
-	${sessionScope.loginedUser.username };
+	<h1>${sessionScope.loginedUser.username };</h1>
 </body>
 </html>
