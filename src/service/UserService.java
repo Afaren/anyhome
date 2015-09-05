@@ -55,10 +55,14 @@ public class UserService {
 		return false;
 	}
 
-	public UserBean resetInfo(UserBean user) {
+	public boolean resetUserInfo(UserBean user) {
 		// TODO Auto-generated method stub
 
-		return null;
+		UserDaoImpl userDaoImpl = new UserDaoImpl();
+		if (userDaoImpl.resetMailAndGender(user.getUser_id(), user.getMail(),
+				user.getGender())) {
+			return true;
+		}
+		return false;
 	}
-
 }

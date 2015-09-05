@@ -163,12 +163,39 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	/*
-	 * 此更新操作涉及两张表 user & account
-	 */
-	public boolean updateMailGenderAccount_num(String mail, String gender,
-			String account_num) {
+	public boolean resetMailAndGender(int user_id, String mail, String gender) {
 		// TODO Auto-generated method stub
+		Connection connection = null;
+		PreparedStatement prst = null;
+		int result = 0;
+
+		connection = DbTool.getConnection();
+		String sql_reset_mailAndGender = "UPDATE user set mail = ?, gender=? WHERE user_id = ? ";// 这里如果只查询了username，那么password是不能得到的
+		try {
+			prst = connection.prepareStatement(sql_reset_mailAndGender);
+			prst.setString(1, mail);
+			prst.setString(2, gender);
+			prst.setInt(3, user_id);
+			result = prst.executeUpdate();
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+
+		if (result != 0) {
+			return true;
+		}
 		return false;
 	}
+
+	// @Override
+	// /*
+	// * 此更新操作涉及两张表 user & account
+	// */
+	// public boolean updateMailGenderAccount_num(String mail, String gender,
+	// String account_num) {
+	// // TODO Auto-generated method stub
+	//
+	// return false;
+	// }
 }

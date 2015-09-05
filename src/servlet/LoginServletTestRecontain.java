@@ -86,7 +86,7 @@ public class LoginServletTestRecontain extends HttpServlet {
 			// 07:50 封装到请求域
 			// request.setAttribute("loginedUser", user);
 			// response.sendRedirect("login.jsp");
-			System.out.println("跳转到home");
+			// System.out.println("跳转到home");
 			// 打印user内容，看是否正确box
 			System.out
 					.println("****************************************************"

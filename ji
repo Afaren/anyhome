@@ -1,0 +1,194 @@
+[1mdiff --git a/WebContent/WEB-INF/classes/dao/UserDao.class b/WebContent/WEB-INF/classes/dao/UserDao.class[m
+[1mindex 53503d6..27aa8ea 100644[m
+Binary files a/WebContent/WEB-INF/classes/dao/UserDao.class and b/WebContent/WEB-INF/classes/dao/UserDao.class differ
+[1mdiff --git a/WebContent/WEB-INF/classes/dao/UserDaoImpl.class b/WebContent/WEB-INF/classes/dao/UserDaoImpl.class[m
+[1mindex bdc1e24..4c531be 100644[m
+Binary files a/WebContent/WEB-INF/classes/dao/UserDaoImpl.class and b/WebContent/WEB-INF/classes/dao/UserDaoImpl.class differ
+[1mdiff --git a/WebContent/WEB-INF/classes/entity/AccountStates.class b/WebContent/WEB-INF/classes/entity/AccountStates.class[m
+[1mindex 6333452..e3bfc6c 100644[m
+Binary files a/WebContent/WEB-INF/classes/entity/AccountStates.class and b/WebContent/WEB-INF/classes/entity/AccountStates.class differ
+[1mdiff --git a/WebContent/WEB-INF/classes/entity/OrderBean.class b/WebContent/WEB-INF/classes/entity/OrderBean.class[m
+[1mindex 6549793..fd8146e 100644[m
+Binary files a/WebContent/WEB-INF/classes/entity/OrderBean.class and b/WebContent/WEB-INF/classes/entity/OrderBean.class differ
+[1mdiff --git a/WebContent/WEB-INF/classes/entity/OrderStates.class b/WebContent/WEB-INF/classes/entity/OrderStates.class[m
+[1mindex 6cd03f0..4a93d8b 100644[m
+Binary files a/WebContent/WEB-INF/classes/entity/OrderStates.class and b/WebContent/WEB-INF/classes/entity/OrderStates.class differ
+[1mdiff --git a/WebContent/WEB-INF/classes/entity/States.class b/WebContent/WEB-INF/classes/entity/States.class[m
+[1mindex 7dfdd5e..080a5b9 100644[m
+Binary files a/WebContent/WEB-INF/classes/entity/States.class and b/WebContent/WEB-INF/classes/entity/States.class differ
+[1mdiff --git a/WebContent/WEB-INF/classes/service/UserService.class b/WebContent/WEB-INF/classes/service/UserService.class[m
+[1mindex 53f9fcc..c3fc83a 100644[m
+Binary files a/WebContent/WEB-INF/classes/service/UserService.class and b/WebContent/WEB-INF/classes/service/UserService.class differ
+[1mdiff --git a/WebContent/WEB-INF/classes/servlet/ReleaseHouseServlet.class b/WebContent/WEB-INF/classes/servlet/ReleaseHouseServlet.class[m
+[1mindex 3d20dad..04de5dc 100644[m
+Binary files a/WebContent/WEB-INF/classes/servlet/ReleaseHouseServlet.class and b/WebContent/WEB-INF/classes/servlet/ReleaseHouseServlet.class differ
+[1mdiff --git a/WebContent/css/mainScreen.css b/WebContent/css/mainScreen.css[m
+[1mindex 273f243..6831b93 100644[m
+[1m--- a/WebContent/css/mainScreen.css[m
+[1m+++ b/WebContent/css/mainScreen.css[m
+[36m@@ -109,15 +109,20 @@[m
+ 		height: 100px;[m
+ 		background: black;[m
+ 		opacity: 0.6;[m
+[31m-		padding-left: 250px;[m
+[32m+[m		[32mtext-align:center;[m[41m[m
+ 		padding-top: 28px;[m
+ 		margin-top: 228px;[m
+ 	}[m
+[32m+[m	[32m#location[m[41m[m
+[32m+[m	[32m{[m[41m[m
+[32m+[m		[32mheight:46px;[m[41m[m
+[32m+[m		[32mwidth:130px;[m[41m[m
+[32m+[m	[32m}[m[41m[m
+ 	#search_picture[m
+ 	{[m
+ 		background: red;[m
+ 		margin-left: -4px;[m
+[31m-		margin-top:-9px;[m
+[32m+[m		[32mmargin-top:-7px;[m[41m[m
+ 		height: 46px;[m
+ 		width: 90px;[m
+ 		font-weight: 500;[m
+[1mdiff --git a/WebContent/home.jsp b/WebContent/home.jsp[m
+[1mindex d203293..9db8ec4 100644[m
+[1m--- a/WebContent/home.jsp[m
+[1m+++ b/WebContent/home.jsp[m
+[36m@@ -96,12 +96,12 @@[m
+ 		</div>[m
+ [m
+ 		<form action = " " method = " " class = "formOne">[m
+[31m-			<input id = "location" placeholder = "您想去哪里" type = "text"[m
+[32m+[m			[32m<input name="where" id = "location" placeholder = "您想去哪里" type = "text"[m[41m[m
+ 				style = "height:46px;width:320px">			 [m
+          [m
+[31m-			<input id = "stay" size="16" type="text" value="入住日期" readonly class="form_datetime"[m
+[32m+[m			[32m<input name="start_time" id = "stay" size="16" type="text" value="入住日期" readonly class="form_datetime"[m[41m[m
+ 			 style = "height:46px;width:145px">[m
+[31m-			<input id = "stay" size="16" type="text" value="退房日期" readonly class="form_datetime"[m
+[32m+[m			[32m<input name="end_time" id = "stay" size="16" type="text" value="退房日期" readonly class="form_datetime"[m[41m[m
+ 			 style = "height:46px;width:145px">[m
+ 			<script type="text/javascript" src="bootstrap-datetimepicker-master/sample in bootstrap v2/jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>[m
+             <script type="text/javascript" src="bootstrap-datetimepicker-master/sample in bootstrap v2/bootstrap/js/bootstrap.min.js"></script>[m
+[1mdiff --git a/WebContent/houseCenter.jsp b/WebContent/houseCenter.jsp[m
+[1mindex c739e3a..49f2d68 100644[m
+[1m--- a/WebContent/houseCenter.jsp[m
+[1m+++ b/WebContent/houseCenter.jsp[m
+[36m@@ -20,14 +20,17 @@[m
+ 						<th>序号</th>[m
+ 						<th>标题</th>[m
+ 						<th>价格</th>[m
+[32m+[m						[32m<th>状态</th>[m[41m[m
+ 						<th>地址</th>[m
+ 						<th>房屋描述</th>[m
+[32m+[m[41m						[m
+ 				</tr>[m
+ 						<c:forEach var="house" items="${houseList }" varStatus="s">[m
+ 				 <tr>[m
+ 				 					<td>s</td>[m
+ 									<td>${house.house_title }</td>[m
+ 									<td>${house.price }</td>[m
+[32m+[m									[32m<td>${house.states }[m[41m[m
+ 									<td>${house.address }</td>[m
+ 									<td>${house.description }</td>[m
+ 				</tr>[m
+[1mdiff --git a/WebContent/images/main_picture/1.png b/WebContent/images/main_picture/1.png[m
+[1mdeleted file mode 100644[m
+[1mindex 069b54a..0000000[m
+Binary files a/WebContent/images/main_picture/1.png and /dev/null differ
+[1mdiff --git a/WebContent/images/main_picture/12.jpg b/WebContent/images/main_picture/12.jpg[m
+[1mdeleted file mode 100644[m
+[1mindex 4156833..0000000[m
+Binary files a/WebContent/images/main_picture/12.jpg and /dev/null differ
+[1mdiff --git a/WebContent/images/main_picture/2.png b/WebContent/images/main_picture/2.png[m
+[1mdeleted file mode 100644[m
+[1mindex 27d4763..0000000[m
+Binary files a/WebContent/images/main_picture/2.png and /dev/null differ
+[1mdiff --git a/WebContent/images/main_picture/blue.jpg b/WebContent/images/main_picture/blue.jpg[m
+[1mdeleted file mode 100644[m
+[1mindex 73820c8..0000000[m
+Binary files a/WebContent/images/main_picture/blue.jpg and /dev/null differ
+[1mdiff --git a/WebContent/images/main_picture/easySlo.jpg b/WebContent/images/main_picture/easySlo.jpg[m
+[1mdeleted file mode 100644[m
+[1mindex 1e820bd..0000000[m
+Binary files a/WebContent/images/main_picture/easySlo.jpg and /dev/null differ
+[1mdiff --git a/WebContent/images/main_picture/heartShape.jpg b/WebContent/images/main_picture/heartShape.jpg[m
+[1mdeleted file mode 100644[m
+[1mindex 9120ff0..0000000[m
+Binary files a/WebContent/images/main_picture/heartShape.jpg and /dev/null differ
+[1mdiff --git a/WebContent/images/main_picture/releaseHouseInformbg.jpg b/WebContent/images/main_picture/releaseHouseInformbg.jpg[m
+[1mdeleted file mode 100644[m
+[1mindex 533d4ce..0000000[m
+Binary files a/WebContent/images/main_picture/releaseHouseInformbg.jpg and /dev/null differ
+[1mdiff --git a/WebContent/images/main_picture/searchShape.jpg b/WebContent/images/main_picture/searchShape.jpg[m
+[1mdeleted file mode 100644[m
+[1mindex dd60969..0000000[m
+Binary files a/WebContent/images/main_picture/searchShape.jpg and /dev/null differ
+[1mdiff --git a/WebContent/releaseHouseInform_files/bootstrap.css b/WebContent/releaseHouseInform_files/bootstrap.css[m
+[1mindex 41d04ef..52b6361 100644[m
+[1m--- a/WebContent/releaseHouseInform_files/bootstrap.css[m
+[1m+++ b/WebContent/releaseHouseInform_files/bootstrap.css[m
+[36m@@ -3497,7 +3497,7 @@[m [ma.btn.disabled,fieldset[disabled] a.btn{[m
+ [m
+ .btn-default:hover{[m
+ 	color:#333;[m
+[31m-	background-color:#e6e6e6;[m
+[32m+[m	[32mbackground-color:#eeeeee;[m
+ 	border-color:#adadad[m
+ }[m
+ [m
+[1mdiff --git a/WebContent/userCenter.jsp b/WebContent/userCenter.jsp[m
+[1mdeleted file mode 100644[m
+[1mindex 43a2f3c..0000000[m
+[1m--- a/WebContent/userCenter.jsp[m
+[1m+++ /dev/null[m
+[36m@@ -1,30 +0,0 @@[m
+[31m-<%@ page language="java" contentType="text/html; charset=utf-8"[m
+[31m-    pageEncoding="utf-8"%>[m
+[31m-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">[m
+[31m-<html>[m
+[31m-<head>[m
+[31m-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">[m
+[31m-<title>User Center Page</title>[m
+[31m-[m
+[31m-<style type="text/css">[m
+[31m-		a{text-decoration:none; color:#06A0E4; cursor: pointer;}[m
+[31m-</style>[m
+[31m-[m
+[31m-</head>[m
+[31m-[m
+[31m-<!-- <iframe src="demo_iframe.htm" name="iframe_a"></iframe>[m
+[31m-<p><a href="http://www.w3school.com.cn" target="iframe_a">W3School.com.cn</a></p> -->[m
+[31m-[m
+[31m-<frameset rows="190px,*">[m
+[31m-		<iframe src="userCenter/userpage.jsp" name="userpage">[m
+[31m-				<frameset cols="200px,*">[m
+[31m-						<iframe src="userCenter/userZone.jsp" name="userZone"></iframe>[m
+[31m-				<!-- 		<frame src="userCenter/show.jsp" name="show"> -->[m
+[31m-				 		<iframe width="500"  height ="500" name="show"></iframe> [m
+[31m-				</frameset>		[m
+[31m-		</iframe>[m
+[31m-</frameset>[m
+[31m-<body>[m
+[31m-	<h1>user center page</h1>[m
+[31m-</body>[m
+[31m-</html>[m
+\ No newline at end of file[m
+[1mdiff --git a/WebContent/userCenter/giveHouse.html b/WebContent/userCenter/giveHouse.html[m
+[1mdeleted file mode 100644[m
+[1mindex b52503b..0000000[m
+[1m--- a/WebContent/userCenter/giveHouse.html[m
+[1m+++ /dev/null[m
+[36m@@ -1,12 +0,0 @@[m
+[31m-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">[m
+[31m-<html>[m
+[31m-<head>[m
+[31m-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">[m
+[31m-<title>give house page</title>[m
+[31m-</head>[m
+[31m-[m
+[31m-[m
+[31m-<body>[m
+[31m-		<h1>give house page发布房屋</h1>[m
+[31m-</body>[m
+[31m-</html>[m
+\ No newline at end of file[m

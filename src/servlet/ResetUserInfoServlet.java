@@ -61,28 +61,25 @@ public class ResetUserInfoServlet extends HttpServlet {
 		// String phone = request.getParameter("phone");
 		// String password = request.getParameter("password");
 
-		int account_num = Integer.parseInt(request.getParameter("account_num"));
+		// int account_num =
+		// Integer.parseInt(request.getParameter("account_num"));
 		String gender = request.getParameter("gender");
 		String mail = request.getParameter("mail");
 
 		// 将表单信息填充到UserBean
-		UserBean user = new UserBean();
+		UserBean user = (UserBean) request.getSession().getAttribute(
+				"loginedUser");
 		// user.setPhone(phone);
 		// user.setPassword(password);
+		// 只修改需要修改的信息->gender&mail
 		user.setGender(gender);
-		user.setAccount_id(account_num);
 		user.setMail(mail);
+		// user.setAccount_id(account_num);
 		// 只填充提交的数据，其它属性为空
 
-		UserBean tempUserBean = user;// 保存引用
-
-		// 合法用户，直接注册
 		UserService userService = new UserService();
 
-		// 用户存在，密码正确，允许登录，发送查询得到的user到主页home
-		// 用户存在，密码错误，要求重新登录
-		// 用户不存在，跳转到注册页面，要求注册
-		if ((user = userService.resetInfo(user)) != null) {
+		if (userService.resetUserInfo(user)) {
 
 			// 更新用户信息到数据库
 			// reset页面提示已修改信息
@@ -91,13 +88,14 @@ public class ResetUserInfoServlet extends HttpServlet {
 			// 打印user内容，看是否正确修改数据库的内容
 			System.out.println("*************用户信息修改*******************"
 					+ this.getClass().getName());
-			System.out.println("username   " + user.getUsername());
-			System.out.println("password  " + user.getPassword());
+			// System.out.println("username   " + user.getUsername());
+			System.out.println("user_id: " + user.getUser_id());
+			// System.out.println("password  " + user.getPassword());
 			System.out.println("mail  " + user.getMail());
-			System.out.println("phone  " + user.getPhone());
+			// System.out.println("phone  " + user.getPhone());
 			System.out.println("gender  " + user.getGender());
-			System.out.println("user_type   " + user.getUser_type());
-			System.out.println("account_id   " + user.getAccount_id());
+			// System.out.println("user_type   " + user.getUser_type());
+			// System.out.println("account_id   " + user.getAccount_id());
 			System.out
 					.println("************************************************"
 							+ this.getClass().getName());
