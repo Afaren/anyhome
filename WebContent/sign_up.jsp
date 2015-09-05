@@ -7,7 +7,7 @@
 <title>sign up page</title>
 <title>注册</title>
 <style type="text/css">
-  #bg{background-image:url(images/sign_up_bg.jpg); background-repeat:no-repeat;}
+   #bg{background-color: #000066;}
   #information{width:315px; height:auto; border:1px dotted; margin:60px 500px; background-color:#FFFFFF;}
   .input{border:0; width:250px;}
   #name{width:auto; height:40px; margin:20px 20px 10px 20px; border:1px dotted;}
@@ -22,7 +22,7 @@
   #agree2{ font-size:11px; margin:3px;}
   #button{width:auto; height:40px; margin:10px 20px 10px 20px; border:1px dotted;}
   #button2{}
-  #button3{border:0; font-size:24px; width:273px; height:40px; background-color:#ff5a5f; color:#FFFFFF;}
+  #button3{border:0; font-size:24px; width:273px; height:40px; background-color:red ; color:#FFFFFF;}
   #enter{ width:275px; height:30px; margin:20px 20px 20px 20px; border:1px solid  #FFFFFF;}
   #enter2{font-size:14px; margin:4px auto auto 10px;}
 </style>

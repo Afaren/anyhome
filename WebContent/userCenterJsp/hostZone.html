@@ -22,12 +22,46 @@
 		</style>
 	</head>
 	
+	
 	<body bgcolor="999900" text="green">
-		<li><a href="setting.jsp" target="showFrame">个人信息</li>
-		<li><a href="orderManage.html" target="showFrame">订单管理</li>
-		<li><a href="myHouses.html" target="showFrame">我的房屋</li>
-		<li><a href="ResetPwd.jsp" target="showFrame">修改密码</li>
+		<li><a href="setting.jsp" target="showFrame" id = "inform" onclick = "changeColor1()">个人信息
+		</a></li>
+		<li><a href="orderManage.html" target="showFrame" id = "order" onclick = "changeColor2()">订单管理
+		</a></li>
+		<li><a href="myHouses.html" target="showFrame" id = "rel" onclick = "changeColor3()">我的房屋
+		</a></li>
+		<li><a href="ResetPwd.jsp" target="showFrame" id = "screte" onclick = "changeColor4()">修改密码
+		</a></li>
+
+		<script type="text/javascript">
+		function changeColor1()
+		{
+			document.getElementById('inform').style.color = "#000066";
+			document.getElementById('order').style.color = "white";
+			document.getElementById('rel').style.color = "white";
+			document.getElementById('screte').style.color = "white";
+		}
+		function changeColor2()
+		{
+			document.getElementById('inform').style.color = "white";
+			document.getElementById('order').style.color = "#000066";
+			document.getElementById('rel').style.color = "white";
+			document.getElementById('screte').style.color = "white";
+		}
+		function changeColor3()
+		{
+			document.getElementById('inform').style.color = "white";
+			document.getElementById('order').style.color = "white";
+			document.getElementById('rel').style.color = "#000066";
+			document.getElementById('screte').style.color = "white";
+		}
+		function changeColor4()
+		{
+			document.getElementById('inform').style.color = "white";
+			document.getElementById('order').style.color = "white";
+			document.getElementById('rel').style.color = "white";
+			document.getElementById('screte').style.color = "#000066";
+		}
+		</script>
 	</body>
 </html>
-
-	

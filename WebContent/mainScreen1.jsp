@@ -59,9 +59,28 @@
 		</div>
 
 		<form action = "SearchHouseServlet" method = "post" class = "formOne">
-			<input name="where" id = "location" placeholder = "您想去哪里" type = "text"
-				style = "height:46px;width:320px">			 
-		
+			<!-- <input name="where" id = "location" placeholder = "您想去哪里" type = "text"
+				style = "height:46px;width:320px"> -->			 
+			<select name = "where" id = "location">
+				<option>你想去哪里</option>
+				<option>莲湖区</option>
+			    <option>新城区</option>
+			    <option>碑林区</option>
+		   		<option>灞桥区</option>
+			   	<option>未央区</option>
+			    <option>雁塔区</option>
+			    <option>阎良区</option>
+			    <option>临潼区</option>				    
+			    <option>长安区</option>
+			    <option>蓝田县</option>
+			    <option>蓝关镇</option>
+			    <option>周至县</option>
+			    <option>二曲镇</option>				    
+			    <option>户县</option>
+			    <option>甘亭镇</option>
+			    <option>高陵县</option>
+			    <option>鹿苑镇</option>
+			</select>
 			<input  name="start_time" id = "stay" size="16" type="text" value="入住日期" readonly class="form_datetime"
 				 style = "height:46px;width:145px">
 				 

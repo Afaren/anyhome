@@ -12,7 +12,7 @@ package entity;
  */
 
 class States {
-	public static final int HOUSE_CREATED_ = 0;
+	public static final int HOUSE_CREATED = 0;
 	public static final int HOUSE_REVIEWING = 1;
 	public static final int HOUSE_RELEASED = 2;
 	public static final int HOUSE_REJECT = 3;

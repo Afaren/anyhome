@@ -16,14 +16,13 @@
 	}
 	.topNav
 	{
-		margin-left: 75%;
+		margin-left: 83%;
 	}
 	.topNav li
 	{
 		display: block;
 		float: left;
-		border-style: solid;
-		border-color: white;
+		border-style: none;
 		margin-left: 15px;
 		margin-top: 10px;
 		padding-top: 5px;
@@ -109,20 +108,19 @@
 		height: 100px;
 		background: black;
 		opacity: 0.6;
-		padding-left: 250px;
+		padding-left: 350px;
 		padding-top: 28px;
 		margin-top: 228px;
 	}
 	#location
 	{
-		height:46px;
-		width:100px;
+		height: 46px;
 	}
 	#search_picture
 	{
 		background: red;
 		margin-left: -4px;
-		margin-top:-10px;
+		margin-top:-9px;
 		height: 46px;
 		width: 90px;
 		font-weight: 500;

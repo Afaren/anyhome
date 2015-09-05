@@ -7,41 +7,64 @@
 	{
 		background-color: #000066;
 	}
-	h1
+	h1 a
 	{
 		color: white;
 		font-size: 38px;
 		font-weight: 1000;
-		font-family: italy;
-
-	
+		font-family: Italian;
+		text-decoration: none;
+	}
+	.slogan
+	{
+		margin-left: 1050px;
 	}
 	li
 	{
 		display: block;
-		float: right;
-		margin-top: 35px;
+		float: left;
+		margin-top: 30px;
 		margin-right: 30px;
 		position: relative;
 	}
 	li a
 	{
-		color: #FFF0F5;
+ 		color: white; 
 		font-size: 24px;
 		font-weight: 400;
 		text-decoration: none;
 	}
-	li a:focus
-	{
-		font-size: 34px;
-	}
-	</body>
 	</style>
 </head>
 
 	<body>
-	<h1>@AnyHome</h1>
-		<li><a href="userZone.html" target="navigation">房客中心</a></li>
-		<li><a href="hostZone.html" target="navigation">房东中心</a></li>
+	<h1><a onclick = "first()">@AnyHome</a></h1>
+	<div class = "slogan">
+		<li><a href="userZone.html" target="navigation" id = "sort1" onclick = "fontsize1(32)">
+			房客中心</a></li>
+		<li><a href="hostZone.html" target="navigation" id = "sort2" onclick = "fontsize2(32)">
+			房东中心</a></li>
+	</div>
+
+	<script type="text/javascript">
+	function first()
+	{
+		window.parent.location.href='../mainScreen2.jsp';
+	}
+	function fontsize1(size) 
+	{
+		document.getElementById('sort1').style.fontSize=size+'px';
+		document.getElementById('sort1').style.color="red";
+		document.getElementById('sort2').style.fontSize=24+'px';
+		document.getElementById('sort2').style.color="white";
+	}
+	function fontsize2(size) 
+	{
+		document.getElementById('sort2').style.fontSize=size+'px';
+		document.getElementById('sort2').style.color="red";
+		document.getElementById('sort1').style.fontSize=24+'px';
+		document.getElementById('sort1').style.color="white";
+	}
+	</script>
 	</body>
 </html>

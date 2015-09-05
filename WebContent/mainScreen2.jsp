@@ -1,7 +1,9 @@
 <%@page import="entity.UserBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -10,40 +12,18 @@
 
 	<link href="./bootstrap-datetimepicker-master/sample in bootstrap v2\bootstrap\css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="./bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/mainScreen.css">	
+    <link rel="stylesheet" type="text/css" href="css/mainScreen2.css">	
 </head>
 
 <body onload = "image()">
-
-<%
-			UserBean userBean = (UserBean)request.getSession().getAttribute("loginedUser");
-		System.out
-				.println("****************************************************"
-						+ this.getClass().getName());
-		if(userBean!=null){
-			System.out.println("user_id: " + userBean.getUser_id());
-			System.out.println(userBean.getAccount_id());
-			System.out.println(userBean.getGender());
-			System.out.println(userBean.getMail());
-			System.out.println(userBean.getPassword());
-			System.out.println(userBean.getPhone());
-			System.out.println(userBean.getUser_type());
-			System.out.println(userBean.getUsername());
-		}
-		System.out
-				.println("****************************************************"
-						+ this.getClass().getName());
-	%>
-
 	<div class = "top">
 		<div class="bg">
 			<img src="PICTURE/3.jpg" id = "main" width = "100%" style = "height: 619px">
 		</div>	
 
 		<div class = "topNav">
-			<li><a href="releaseHouse.jsp">成为房东</a></li>
-			<li><a href="login.jsp">登录</a></li>
-			<li><a href="sign_up.jsp">注册</a></li>
+			<li><a href="userCenterJsp/frame.html">${sessionScope.loginedUser.username }</a></li>
+			<li><a href="">退出</a></li>
 		</div>
 
 		<div class = "slogan">
