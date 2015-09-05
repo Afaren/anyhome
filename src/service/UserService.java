@@ -65,4 +65,22 @@ public class UserService {
 		}
 		return false;
 	}
+
+	public boolean checkPwd(UserBean userBean, String oldpwd) {
+		// TODO Auto-generated method stub
+
+		UserDaoImpl userDaoImpl = new UserDaoImpl();
+		if (userDaoImpl.isCorrectPwd(userBean, oldpwd)) {
+			return true;
+		}
+
+		return false;
+	}
+
+	public void resetPwd(UserBean userBean, String newpwd) {
+		// TODO Auto-generated method stub
+
+		UserDaoImpl userDaoImpl = new UserDaoImpl();
+		userDaoImpl.resetPwd(userBean, newpwd);
+	}
 }

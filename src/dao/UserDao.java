@@ -14,6 +14,10 @@ import entity.UserBean;
  */
 public interface UserDao {
 
+	public void resetPwd(UserBean userBean, String newPassword);
+
+	public boolean isCorrectPwd(UserBean userBean, String password);
+
 	public boolean resetMailAndGender(int user_id, String mail, String gender);
 
 	// public boolean updateMailGenderAccount_num(String mail, String gender,

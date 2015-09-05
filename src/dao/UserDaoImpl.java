@@ -188,6 +188,39 @@ public class UserDaoImpl implements UserDao {
 		return false;
 	}
 
+	@Override
+	public boolean isCorrectPwd(UserBean userBean, String password) {
+		if (userBean.getPassword().equals(password)) {
+			return true;
+		}
+		return false;
+
+	}
+
+	@Override
+	public void resetPwd(UserBean userBean, String newPassword) {
+
+		Connection connection = null;
+		PreparedStatement prst = null;
+		int result = 0;
+
+		try {
+			connection = DbTool.getConnection();
+			String sql_reset_password = "UPDATE user SET password=? WHERE user_id=?";
+
+			prst = connection.prepareStatement(sql_reset_password);
+			prst.setString(1, newPassword);
+			prst.setInt(2, userBean.getUser_id());
+			result = prst.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		System.out.println("更新用户密码结果：      " + result);
+
+	}
+
 	// @Override
 	// /*
 	// * 此更新操作涉及两张表 user & account

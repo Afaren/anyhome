@@ -102,7 +102,8 @@ public class LoginServletTest extends HttpServlet {
 					.println("****************************************************"
 							+ this.getClass().getName());
 			// 这里用重定向无法得到数据 user，请求转发可以吗？
-			response.sendRedirect("home.jsp");
+			// response.sendRedirect("home.jsp");
+			response.sendRedirect("mainScreen2.jsp");
 			// 9/1/2015 07:41 使用请求转发******************************
 			// try {
 			// request.getRequestDispatcher("home.jsp").forward(request,

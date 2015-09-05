@@ -53,10 +53,6 @@ public class LoginServletTestRecontain extends HttpServlet {
 
 	protected void processRequest(HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
-		// TODO Auto-generated method stub
-		// 获取WritePrint对象
-		// 获取请求参数
-		// 打印到页面
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
@@ -75,19 +71,10 @@ public class LoginServletTestRecontain extends HttpServlet {
 
 		// 合法用户，直接注册
 		UserService userService = new UserService();
-
-		// 用户存在，密码正确，允许登录，发送查询得到的user到主页home
-		// 用户存在，密码错误，要求重新登录
-		// 用户不存在，跳转到注册页面，要求注册
 		if ((user = userService.allowLogin(user)) != null) {
 
-			// 封装到会话，redirect到主页
 			request.getSession().setAttribute("loginedUser", user);//
-			// 07:50 封装到请求域
-			// request.setAttribute("loginedUser", user);
-			// response.sendRedirect("login.jsp");
-			// System.out.println("跳转到home");
-			// 打印user内容，看是否正确box
+
 			System.out
 					.println("****************************************************"
 							+ this.getClass().getName());
@@ -101,22 +88,9 @@ public class LoginServletTestRecontain extends HttpServlet {
 			System.out
 					.println("****************************************************"
 							+ this.getClass().getName());
-			// 这里用重定向无法得到数据 user，请求转发可以吗？
 			response.sendRedirect("userCenterJsp/setting.jsp");
-			// 9/1/2015 07:41 使用请求转发******************************
-			// try {
-			// request.getRequestDispatcher("home.jsp").forward(request,
-			// response);
-			// } catch (ServletException e) {
-			// // TODO Auto-generated catch block
-			// e.printStackTrace();
-			// }
 		} else if (userService.userExists(tempUserBean)) {
-			// out.print("<h2>用户名已存在，请选用其它用户名</h2>");
-			out.print("<h2>用户名或密码错误，请重新登录</h2>");// 提示信息可能需要封装在会话域，传递到login.jsp
-			// response.sendRedirect("login.jsp");
-			// request.getRequestDispatcher("login.jsp")
-			// .include(request, response);
+			out.print("<h2>用户名或密码错误，请重新登录</h2>");
 
 			try {
 				request.getRequestDispatcher(
@@ -124,21 +98,10 @@ public class LoginServletTestRecontain extends HttpServlet {
 						response);
 
 			} catch (ServletException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
-			// response.sendRedirect("sign_up.jsp");
-
 		} else {
-			// 不存在这个用户，跳转到注册页面
-			// out.print("用户" + user.getPhone() +
-			// "  不存在，请注册");用户不存在时，无法从数据库中提取出这个字段，所以应该用tempUser
-			// out.print("用户" + tempUserBean.getPhone() + "  不存在，请注册");
-			// 封装到请求中，不然无法显示错误信息的提示unlogin_message
-			// request.setAttribute("unlogin_message",
-			// "用户" + tempUserBean.getPhone() + "  不存在，请注册");
-			// 封装到请求域中，还是无法在下一次请求得到
 
 			request.getSession(false).setAttribute(
 					"unlogin_message",
