@@ -37,6 +37,7 @@ public class UserService {
 	// 手机号码与密码均正确，运行登录
 	public UserBean allowLogin(UserBean user) {
 
+		System.out.println(user.getPassword() + user.getPhone());
 		UserDaoImpl userDaoImpl = new UserDaoImpl();
 		if ((user = userDaoImpl.queryByPhoneAndPassword(user.getPhone(),
 				user.getPassword())) != null) {

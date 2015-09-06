@@ -12,7 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class Order
  */
-@WebServlet("/Order")
+@WebServlet("/OrderOrperateServlet")
+// 忘了这里是不是改过了******************************************************************************************
 public class OrderOrperateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

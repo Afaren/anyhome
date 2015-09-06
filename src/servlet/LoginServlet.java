@@ -60,6 +60,7 @@ public class LoginServlet extends HttpServlet {
 		String phone = request.getParameter("phone");
 		String password = request.getParameter("password");
 
+		System.out.println(phone + password);
 		UserBean user = new UserBean();
 		user.setPhone(phone);
 		user.setPassword(password);
