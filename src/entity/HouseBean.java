@@ -85,4 +85,13 @@ public class HouseBean {
 		this.house_id = house_id;
 	}
 
+	@Override
+	public String toString() {
+		return "HouseBean [house_id=" + house_id + ", host_id=" + host_id
+				+ ", price=" + price + ", address=" + address
+				+ ", description=" + description + ", note=" + note
+				+ ", photo_path=" + photo_path + ", house_title=" + house_title
+				+ "]";
+	}
+
 }

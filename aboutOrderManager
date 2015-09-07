@@ -1,0 +1,16 @@
+aboutOrderManager
+
+因为订单管理主要针对state的操作，所以针对order的各种操作其实就是对state赋值
+
+ OrderStates states 
+ 
+  改变订单状态的各种操作
+ 					setOrder状态名_1(){
+ 			//直接调用OrderBean的接口 setStates(状态名)
+ 					} 
+ 					
+ 这里状态名直接用OrderStates的静态常量，所以原先私有的OrderStates类应该更改访问权限
+ 
+ 
+	
+	

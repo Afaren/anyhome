@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import util.DbTool;
 import entity.UserBean;
@@ -19,6 +21,39 @@ import entity.UserBean;
  * 
  */
 public class UserDaoImpl implements UserDao {
+
+	public List<UserBean> AllUsers() {
+		Connection connection = null;
+		PreparedStatement prst = null;
+		ResultSet rSet = null;
+		List<UserBean> userList = new ArrayList<UserBean>();
+		try {
+			connection = DbTool.getConnection();
+			String sql_query_all_users = "SELECT * FROM user;";// 这里如果只查询了username，那么password是不能得到的
+			prst = connection.prepareStatement(sql_query_all_users);
+			rSet = prst.executeQuery();
+
+			if (rSet.next()) {
+				UserBean userBean = new UserBean();
+				userBean.setUser_id(rSet.getInt("user_id"));
+				userBean.setAccount_id(rSet.getInt("account_id"));
+				userBean.setUsername(rSet.getString("username"));
+				userBean.setPassword(rSet.getString("password"));
+				userBean.setPhone(rSet.getString("phone"));
+				userBean.setMail(rSet.getString("mail"));
+				userBean.setGender(rSet.getString("gender"));
+				userBean.setUser_type(rSet.getInt("user_type"));
+				userList.add(userBean);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DbTool.close(rSet, prst, connection);// 关闭数据库资源
+		}
+
+		return userList;
+	}
 
 	@Override
 	public boolean isValidUser(String username) {

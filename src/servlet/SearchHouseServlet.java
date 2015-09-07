@@ -2,12 +2,17 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Iterator;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import service.HouseService;
+import entity.HouseBean;
 
 /**
  * Servlet implementation class SearchHouseServlet
@@ -63,10 +68,28 @@ public class SearchHouseServlet extends HttpServlet {
 		out.print(end_time);
 		out.print(numbers);
 
+		HouseService houseService = new HouseService();
+		// List<HouseBean> targetHouseList = houseService.getTargetHouse(
+		// whereToG0, start_time, end_time);
+		List<HouseBean> targetHouseList = houseService.getTargetHouse(
+				whereToG0, start_time, end_time);
+
+		out.print("<img src=\"http" + util.Config.filePath + "/ "
+				+ targetHouseList.get(0).getPhoto_path()
+				+ "\"   alt=\"house\"  />");
+
+		// System.out.println("<img src=\"" + util.Config.filePath + "/"
+		// + targetHouseList.get(0).getPhoto_path()
+		// + "\"   alt=\"house\"  />");
+
+		Iterator<HouseBean> iterator = targetHouseList.iterator();
+		for (HouseBean houseBean : targetHouseList) {
+			System.out.println(houseBean.toString());
+		}
+
 		System.out.println(whereToG0);
 		System.out.println(start_time);
 		System.out.println(end_time);
 		System.out.println(numbers);
 	}
-
 }

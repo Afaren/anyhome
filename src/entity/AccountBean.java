@@ -64,4 +64,11 @@ public class AccountBean {
 	public void setState(AccountStates state) {
 		this.state = state;
 	}
+
+	@Override
+	public String toString() {
+		return "AccountBean [account_num=" + account_num + ", password="
+				+ password + ", balance=" + balance + ", trade_time="
+				+ trade_time + ", state=" + state + "]";
+	}
 }

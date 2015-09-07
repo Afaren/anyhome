@@ -88,4 +88,12 @@ public class OrderBean {
 		this.host_id = host_id;
 	}
 
+	@Override
+	public String toString() {
+		return "OrderBean [order_num=" + order_num + ", states=" + states
+				+ ", total_price=" + total_price + ", start_time=" + start_time
+				+ ", end_time=" + end_time + ", user_id=" + user_id
+				+ ", host_id=" + host_id + "]";
+	}
+
 }

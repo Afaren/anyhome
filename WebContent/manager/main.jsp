@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>管理员页面</title>
+<title>main jsp</title>
 
 
 
@@ -13,7 +13,7 @@
 	<frame src="adnav.htm"  noresize="noresize" >					
 	<frameset cols="16%,84%">
 	<frame src="menu.htm"  name="navigation" noresize="noresize">
-	<frame src="account.html" name="showFrame"  noresize="noresize">
+	<frame src="users.jsp" name="showFrame"  noresize="noresize">
 	</frameset>
 				
 	</frameset><noframes></noframes>

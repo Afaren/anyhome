@@ -57,4 +57,11 @@ public class HouseStateBean {
 		this.house_id = house_id;
 	}
 
+	@Override
+	public String toString() {
+		return "HouseStateBean [start_time=" + start_time + ", end_time="
+				+ end_time + ", states=" + states + ", house_id=" + house_id
+				+ "]";
+	}
+
 }

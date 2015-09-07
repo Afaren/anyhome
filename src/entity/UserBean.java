@@ -86,4 +86,12 @@ public class UserBean {
 		this.user_type = user_type;
 	}
 
+	@Override
+	public String toString() {
+		return "UserBean [user_id=" + user_id + ", user_type=" + user_type
+				+ ", account_id=" + account_id + ", username=" + username
+				+ ", password=" + password + ", gender=" + gender + ", mail="
+				+ mail + ", phone=" + phone + "]";
+	}
+
 }

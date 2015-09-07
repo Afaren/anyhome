@@ -18,6 +18,42 @@
 	{
 		margin-left: 83%;
 	}
+	.topNav ul
+	{
+		margin-top: 10px;
+		margin-left: 0px;
+		position:absolute;
+		display: none;
+	}
+	.topNav li:hover ul
+	{
+		margin-left: -15px;
+		display: block;
+	}
+	.topNav li ul li:hover
+	{
+		opacity: 1.0;
+	}
+	.topNav ul li
+	{
+		margin-top: 0px;
+		display: block;
+		width: 118px;
+		height: 38px;
+		border-style: solid;
+		border-width: 1px;
+		border-color: white;
+		background-color: black;
+		opacity: 0.6;
+	}
+	.topNav ul li a
+	{
+		margin-top: 5px;
+		margin-left: 3px;
+		font-size: 28px;
+		color: white;
+		opacity: 1.0;
+	}
 	.topNav li
 	{
 		display: block;
@@ -26,6 +62,8 @@
 		margin-left: 15px;
 		margin-top: 10px;
 		padding-top: 5px;
+		color: white;
+		font-size: 32px;
 	}
 	.topNav li a
 	{
@@ -110,7 +148,7 @@
 		opacity: 0.6;
 		padding-left: 350px;
 		padding-top: 28px;
-		margin-top: 228px;
+		margin-top: 190px;
 	}
 	#location
 	{

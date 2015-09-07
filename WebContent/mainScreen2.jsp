@@ -18,22 +18,19 @@
 <body onload = "image()">
 	<div class = "top">
 		<div class="bg">
-			<img src="PICTURE/3.jpg" id = "main" width = "100%" style = "height: 619px">
+			<img src="images/main_picture/3.jpg" id = "main" width = "100%" style = "height: 619px">
 		</div>	
 
 		<div class = "topNav">
 			<li><a href="userCenterJsp/frame.html">${sessionScope.loginedUser.username }</a></li>
 			<li><a href="">退出</a></li>
 		</div>
-
 		<div class = "slogan">
 			<h1>四海一家</h1>
 		</div>
-
 		<div class = "component-left">
 			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
 		</div>
-
 		<div class = "component-right">
 			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 		</div>
@@ -60,6 +57,7 @@
 			    <option>甘亭镇</option>
 			    <option>高陵县</option>
 			    <option>鹿苑镇</option>
+			   
 			</select>
 			<input  name="start_time" id = "stay" size="16" type="text" value="入住日期" readonly class="form_datetime"
 				 style = "height:46px;width:145px">

@@ -2,7 +2,11 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import util.DbTool;
 import entity.HouseBean;
@@ -55,4 +59,52 @@ public class HouseDaoImpl implements HouseDao {
 		// return insert_a_house;
 	}
 
+	@Override
+	public List<HouseBean> getTargetAddressHouses(String targetAddress) {
+		List<HouseBean> targetHouseList = new ArrayList<HouseBean>();
+		Connection connection = DbTool.getConnection();
+		PreparedStatement prst = null;
+		ResultSet rSet = null;
+		String sql_queryTargetHouse = "SELECT * FROM HOUSE WHERE address LIKE ?";
+		try {
+			prst = connection.prepareStatement(sql_queryTargetHouse);
+			// prst.setString(1, targetAddress);
+			prst.setString(1, "%" + targetAddress + "%");// 模糊查询
+			rSet = prst.executeQuery();
+			while (rSet.next()) {
+				HouseBean houseBean = new HouseBean();
+				houseBean.setAddress(rSet.getString("address"));
+				houseBean.setDescription(rSet.getString("description"));
+				houseBean.setHost_id(rSet.getInt("host_id"));
+				houseBean.setHouse_id(rSet.getInt("house_id"));
+				houseBean.setHouse_title(rSet.getString("house_title"));
+				houseBean.setNote(rSet.getString("note"));
+				houseBean.setPhoto_path(rSet.getString("photo_path"));
+				houseBean.setPrice(rSet.getInt("price"));
+				targetHouseList.add(houseBean);
+			}
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+
+		return targetHouseList;
+	}
+
+	@Override
+	public List<HouseBean> getTargetTimeHouses(String start_time,
+			String end_time) {
+
+		// 这里涉及房屋状态的变化，还有时间段的判断
+		return null;
+	}
+
+	public static void main(String[] args) {
+		List<HouseBean> list = new HouseDaoImpl().getTargetAddressHouses("潮阳");
+
+		Iterator<HouseBean> iterator = list.iterator();
+		for (HouseBean houseBean : list) {
+			System.out.println(houseBean.toString());
+		}
+	}
 }

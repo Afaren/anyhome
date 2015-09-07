@@ -1,51 +1,36 @@
-<%@page import="entity.UserBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>main screen</title>
 <link href="./bootstrap-3.3.5-dist/css/bootstrap.css" type="text/css" rel="stylesheet"/>
-
-	<link href="./bootstrap-datetimepicker-master/sample in bootstrap v2\bootstrap\css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="./bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/mainScreen.css">	
+<link href="./bootstrap-datetimepicker-master/sample in bootstrap v2/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="./bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+<link rel="stylesheet" type="text/css" href="css/mainScreen2.css">
 </head>
 
 <body onload = "image()">
-
-<%
-			UserBean userBean = (UserBean)request.getSession().getAttribute("loginedUser");
-		System.out
-				.println("****************************************************"
-						+ this.getClass().getName());
-		if(userBean!=null){
-			System.out.println("user_id: " + userBean.getUser_id());
-			System.out.println(userBean.getAccount_id());
-			System.out.println(userBean.getGender());
-			System.out.println(userBean.getMail());
-			System.out.println(userBean.getPassword());
-			System.out.println(userBean.getPhone());
-			System.out.println(userBean.getUser_type());
-			System.out.println(userBean.getUsername());
-		}
-		System.out
-				.println("****************************************************"
-						+ this.getClass().getName());
-	%>
-
 	<div class = "top">
 		<div class="bg">
-			<img src="PICTURE/3.jpg" id = "main" width = "100%" style = "height: 619px">
+			<img src="images/main_picture/3.jpg" id = "main" width = "100%" style = "height: 619px">
 		</div>	
 
 		<div class = "topNav">
-			<li><a href="releaseHouse.jsp">成为房东</a></li>
-			<li><a href="login.jsp">登录</a></li>
-			<li><a href="sign_up.jsp">注册</a></li>
+			<li>用户名
+				<ul>
+					<li><a href="userCenterJsp/frame.html">个人中心</a></li>
+					<li><a href="releaseHouse.jsp">发布房屋</a></li>
+				</ul>
+			</li>
 		</div>
 
+		<div class = "left" style = "padding-top:15px">
+			<a href="" style = "font-size:32px;color:white;margin-left:20px;padding-top:100px;list-style-type: none;text-decoration: none">退出</a>
+		</div>
 		<div class = "slogan">
 			<h1>四海一家</h1>
 		</div>
@@ -80,8 +65,6 @@
 			    <option>甘亭镇</option>
 			    <option>高陵县</option>
 			    <option>鹿苑镇</option>
-			    <option>韩城</option>
-		
 			</select>
 			<input  name="start_time" id = "stay" size="16" type="text" value="入住日期" readonly class="form_datetime"
 				 style = "height:46px;width:145px">
@@ -125,28 +108,27 @@
 
 		<div class = "display">
 			<div id = "two">
-				<img alt="picture纽约" src="images/main_picture/NewYork.jpg" id = "one">
-				<img alt="picturejoke的家" src="images/main_picture/jokeHouse.jpg" id = "one">
+				<img alt="纽约" src="images/main_picture/NewYork.jpg" id = "one">
+				<img alt="joke的家" src="images/main_picture/jokeHouse.jpg" id = "one">
 			</div>
 			<div id = "three">
-				<img alt="picture夏威夷" src="images/main_picture/Hawaii.jpg" id = "one">
-				<img src="images/main_picture/Paris.jpg" id = "one">
-				<img src="images/main_picture/Barcelona.jpg" id = "one">
+				<img alt="夏威夷" src="images/main_picture/Hawaii.jpg" id = "one">
+				<img alt="Paris" src="images/main_picture/Paris.jpg" id = "one">
+				<img alt="Barcelona" src="images/main_picture/Barcelona.jpg" id = "one">
 			</div>
 			<div id = "two">
-				<img src="images/main_picture/brigHouse.jpg" id = "one">
-				<img src="images/main_picture/London.jpg" id = "one">
+				<img alt="brigHouse" src="images/main_picture/brigHouse.jpg" id = "one">
+				<img alt="London" src="images/main_picture/London.jpg" id = "one">
 			</div>
 			<div id = "three">
-				<img src="images/main_picture/SanFrancisco.jpg" id = "one">
-				<img src="images/main_picture/Berlin.jpg" id = "one">
-				<img src="images/main_picture/Budapest.jpg" id = "one">
+				<img alt="SanFranciso" src="images/main_picture/SanFrancisco.jpg" id = "one">
+				<img alt="Berlin" src="images/main_picture/Berlin.jpg" id = "one">
+				<img alt="Budapest" src="images/main_picture/Budapest.jpg" id = "one">
 			</div>
 		</div>
 	</div>
-
-	<<div class = "bottom">
-		<img src="images/main_picture/15.jpg" id = "changePicture">
+	<div class = "bottom">
+		<img alt="15" src="images/main_picture/15.jpg" id = "changePicture">
 
 		<div class = "slogan-h2">
 			<h2>旅游的魅力</h2>
@@ -160,7 +142,6 @@
 			<span class="glyphicon glyphicon-star" aria-hidden="true" onclick = "dowith4()"></span>
 		<div>
 	</div>
-
 	<script type="text/javascript">
 	var arr = new Array();
 	arr[0] = "images/main_picture/3.jpg ";/*试着修改图片路径，看能否载入*/ 
@@ -219,6 +200,7 @@
 			myVideo.pause(); 
 	}
 	</script>
+
 	<script type="text/javascript">
 	function address()
 	{
@@ -227,6 +209,7 @@
 		if (add.) {};
 	}
 	</script>
+
 			<script type="text/javascript" src="./bootstrap-datetimepicker-master/sample in bootstrap v2/jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
             <script type="text/javascript" src="./bootstrap-datetimepicker-master/sample in bootstrap v2/bootstrap/js/bootstrap.min.js"></script>
             <script type="text/javascript" src="./bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>

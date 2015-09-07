@@ -28,8 +28,10 @@ import entity.UserBean;
 @WebServlet("/ReleaseHouseServlet2")
 public class ReleaseHouseServlet2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private final String filePath = "E:/ahImg";// 文件上传路径
-	private final String tempFilePath = "E:/ahTemp";// 文件临时存储路径
+	// private final String filePath = "E:/ahImg";// 文件上传路径
+	// private final String tempFilePath = "E:/ahTemp";// 文件临时存储路径
+	private final String filePath = util.Config.filePath;
+	private final String tempFilePath = util.Config.tempFilePath;
 
 	private String s_province;
 	private String s_city;
@@ -58,7 +60,6 @@ public class ReleaseHouseServlet2 extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		precessRequest(request, response);
-
 	}
 
 	/**
@@ -93,6 +94,11 @@ public class ReleaseHouseServlet2 extends HttpServlet {
 		PrintWriter outNet = response.getWriter();
 		// StringBuilder address = new StringBuilder();
 		HouseBean houseBean = new HouseBean();// 各字段在两个函数中填充
+
+		// ******************************修改filePath**********************************
+		String filePath_2 = request.getSession().getServletContext()
+				.getRealPath("/")
+				+ filePath;
 		try {
 			DiskFileItemFactory factory = new DiskFileItemFactory();
 			// 设置缓冲区大小
@@ -122,9 +128,6 @@ public class ReleaseHouseServlet2 extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		// address.append(s_province).append(s_city).append(s_country)
-		// .append(s_address);
-		// houseBean.setAddress(address);
 		houseBean.setAddress(s_province + s_city + s_country + s_address);
 		houseBean.setPhoto_path(photo);
 		houseBean.setHost_id(((UserBean) request.getSession(false)
@@ -136,8 +139,7 @@ public class ReleaseHouseServlet2 extends HttpServlet {
 			response.sendRedirect("home.jsp");
 		} else {
 			outNet.print("<h1>无法发布房屋</h1>");
-			// 这里应该跳转到主页，现在先将主要的业务逻辑写好，不管这些
-			// response.sendRedirect("home.jsp");
+
 		}
 
 		System.out.println(houseBean.getAddress());
@@ -178,7 +180,6 @@ public class ReleaseHouseServlet2 extends HttpServlet {
 			s_address = new String(value.getBytes("iso-8859-1"), "utf-8");
 			return;
 		}
-
 	}
 
 	private void processUploadFile(FileItem item, HouseBean houseBean,
