@@ -1,5 +1,7 @@
 package entity;
 
+import java.io.Serializable;
+
 /**
  * @author : Chen
  * @fileName : entity.AccountBean.java
@@ -10,14 +12,14 @@ package entity;
  * @describe : states 1. 支付 2. 收取退款 3. 收款 4. 房东退款
  * 
  */
-class AccountStates {
+class AccountStates implements Serializable {
 	public static final int PAY = 1;
 	public static final int RECEIVE_REFUND = 2;
 	public static final int RECEIVE = 3;
 	public static final int HOST_REFUND = 4;
 }
 
-public class AccountBean {
+public class AccountBean implements Serializable {
 
 	private String account_num;
 	private String password;

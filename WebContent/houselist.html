@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset = "utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title></title>
+<style type="text/css">
+body
+{
+	background:#F8F8FF;
+}
+#header 
+{
+	font-size: 32px;
+}
+.main
+{
+	margin-top: 10px;
+	margin-left: 30px;
+}
+	
+</style>
+</head>
+
+<body>
+	<div id="header">
+  		<a href="mainScreen2.jsp" style = "text-decoration:none;margin-left:30px;">@Anyhome</a>
+  	</div>
+
+  	<div class="main">
+  		<a href="#"><img id="img_left" src="images/main_picture/18.jpg" width = "200" height = "200"/></a>
+  		<p>名称:</p>
+  		<p>价格:</p>
+  		<p>详细地址</p>
+  	</div>
+  
+</body>
+</html>
+	<c:choose>
+				<c:when test="${empty sessionScope.houseList }">
+					houseList 没有满足的数据
+				</c:when>
+				<c:otherwise>
+					<table border="1" align="center">
+						<tr>
+							<td>房屋名称</td>
+							<td>详细信息</td>
+							<td>预定房屋</td>
+							<td>手机号码</td>
+						</tr>
+						<c:forEach var="house" items="${sessionScope.houseList }" varStatus="s">
+						 <tr>
+								<td>${house.house_title}</td>
+								<td><a href="houseDetail.jsp?address=${house.address }">查看详情</a></td>
+			 				    <td><a  href="OrderOrperateServlet?state=<%=OrderStates.CHECKING_ORDER %>&host_id=${house.host_id}&user_id=${sessionScope.loginedUser.user_id}">预订房屋</a></td>		 <!-- 生成订单 -->
+			 			        <td>xxxx</td>		 <!-- href=houseStateServlet?state=tongguoshenghe -->
+						</tr>
+						</c:forEach>
+					</table>
+				</c:otherwise>
+		</c:choose>
+	
+

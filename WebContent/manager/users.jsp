@@ -1,4 +1,3 @@
-<%-- <%@page import="chen.friend.vo.Friend"%> --%>
 <%@page import="entity.UserBean" %>
 <%@page import="util.DbTool" %>
 <%@page import="java.sql.Connection" %>

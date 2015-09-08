@@ -75,7 +75,7 @@ public class ResetUserInfoServlet extends HttpServlet {
 		user.setGender(gender);
 		user.setMail(mail);
 		// user.setAccount_id(account_num);
-		// 只填充提交的数据，其它属性为空
+		// 只填充提交的数据，其它属性为空????其它属性其实已在session中了
 
 		UserService userService = new UserService();
 
@@ -88,14 +88,7 @@ public class ResetUserInfoServlet extends HttpServlet {
 			// 打印user内容，看是否正确修改数据库的内容
 			System.out.println("*************用户信息修改*******************"
 					+ this.getClass().getName());
-			// System.out.println("username   " + user.getUsername());
-			System.out.println("user_id: " + user.getUser_id());
-			// System.out.println("password  " + user.getPassword());
-			System.out.println("mail  " + user.getMail());
-			// System.out.println("phone  " + user.getPhone());
-			System.out.println("gender  " + user.getGender());
-			// System.out.println("user_type   " + user.getUser_type());
-			// System.out.println("account_id   " + user.getAccount_id());
+			System.out.println(user);
 			System.out
 					.println("************************************************"
 							+ this.getClass().getName());

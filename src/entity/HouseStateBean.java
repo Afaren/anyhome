@@ -1,5 +1,7 @@
 package entity;
 
+import java.io.Serializable;
+
 /**
  * @author : Chen
  * @fileName : entity.house_state.java
@@ -11,14 +13,14 @@ package entity;
  * 
  */
 
-class States {
+class States implements Serializable {
 	public static final int HOUSE_CREATED = 0;
 	public static final int HOUSE_REVIEWING = 1;
 	public static final int HOUSE_RELEASED = 2;
 	public static final int HOUSE_REJECT = 3;
 }
 
-public class HouseStateBean {
+public class HouseStateBean implements Serializable {
 
 	private String start_time;
 	private String end_time;

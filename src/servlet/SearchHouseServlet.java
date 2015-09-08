@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import service.HouseService;
 import entity.HouseBean;
@@ -74,9 +75,9 @@ public class SearchHouseServlet extends HttpServlet {
 		List<HouseBean> targetHouseList = houseService.getTargetHouse(
 				whereToG0, start_time, end_time);
 
-		out.print("<img src=\"http" + util.Config.filePath + "/ "
-				+ targetHouseList.get(0).getPhoto_path()
-				+ "\"   alt=\"house\"  />");
+		// out.print("<img src=\"http" + util.Config.filePath + "/ "
+		// + targetHouseList.get(0).getPhoto_path()
+		// + "\"   alt=\"house\"  />");
 
 		// System.out.println("<img src=\"" + util.Config.filePath + "/"
 		// + targetHouseList.get(0).getPhoto_path()
@@ -87,9 +88,16 @@ public class SearchHouseServlet extends HttpServlet {
 			System.out.println(houseBean.toString());
 		}
 
-		System.out.println(whereToG0);
-		System.out.println(start_time);
-		System.out.println(end_time);
-		System.out.println(numbers);
+		// request.getSession().setAttribute("houseList", targetHouseList);
+		HttpSession session = request.getSession();
+		session.setAttribute("houseList", targetHouseList);
+		// session.set
+		// request.setAttribute("start_time", start_time);
+		// request.setAttribute("end_time", end_time);
+
+		session.setAttribute("start_time", start_time);
+		session.setAttribute("end_time", end_time);
+		response.sendRedirect("targetHouse.jsp");
+
 	}
 }

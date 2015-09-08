@@ -136,7 +136,7 @@ public class ReleaseHouseServlet2 extends HttpServlet {
 		// 使用service类将house数据写入到数据库
 		HouseService houseService = new HouseService();
 		if (houseService.releaseHouse(houseBean)) {
-			response.sendRedirect("home.jsp");
+			response.sendRedirect("mainScreen2.jsp");
 		} else {
 			outNet.print("<h1>无法发布房屋</h1>");
 

@@ -21,14 +21,7 @@
 				.println("****************************************************"
 						+ this.getClass().getName());
 		if(userBean!=null){
-			System.out.println("user_id: " + userBean.getUser_id());
-			System.out.println(userBean.getAccount_id());
-			System.out.println(userBean.getGender());
-			System.out.println(userBean.getMail());
-			System.out.println(userBean.getPassword());
-			System.out.println(userBean.getPhone());
-			System.out.println(userBean.getUser_type());
-			System.out.println(userBean.getUsername());
+			System.out.println(userBean	);
 		}
 		System.out
 				.println("****************************************************"
@@ -58,7 +51,7 @@
 			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 		</div>
 
-		<form action = "SearchHouseServlet" method = "post" class = "formOne">
+		<form action = "TestDateTimePicker" method = "post" class = "formOne">
 			<!-- <input name="where" id = "location" placeholder = "您想去哪里" type = "text"
 				style = "height:46px;width:320px"> -->			 
 			<select name = "where" id = "location">
@@ -80,17 +73,15 @@
 			    <option>甘亭镇</option>
 			    <option>高陵县</option>
 			    <option>鹿苑镇</option>
-			    <option>韩城</option>
-		
 			</select>
-			<input  name="start_time" id = "stay" size="16" type="text" value="入住日期" readonly class="form_datetime"
+			<input  name="start_time" id = "stay" size="16" type="text" value="入住日期" readonly class="form_date"
 				 style = "height:46px;width:145px">
 				 
-			<input   name="end_time" id = "stay" size="16" type="text" value="退房日期" readonly class="form_datetime"
+			<input   name="end_time" id = "stay" size="16" type="text" value="退房日期" readonly class="form_date"
 				 style = "height:46px;width:145px">
 			 
 			<script type="text/javascript">
-			    $(".form_datetime").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
+			    $(".form_datetime").datetimepicker({format: 'yyyy-MM-dd hh:mm:ss'});
 			</script>  
 
 		    <select name="numbers"  id = "guestnum" style = "height:46px;width:120px">
@@ -233,16 +224,6 @@
             <script type="text/javascript" src="./bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
 
 			<script type="text/javascript">
-		    $('.form_datetime').datetimepicker({
-		        //language:  'fr',
-		        weekStart: 1,
-		        todayBtn:  1,
-				autoclose: 1,
-				todayHighlight: 1,
-				startView: 2,
-				forceParse: 0,
-		        showMeridian: 1
-		    });
 			$('.form_date').datetimepicker({
 		        language:  'fr',
 		        weekStart: 1,
@@ -251,17 +232,6 @@
 				todayHighlight: 1,
 				startView: 2,
 				minView: 2,
-				forceParse: 0
-		    });
-			$('.form_time').datetimepicker({
-		        language:  'fr',
-		        weekStart: 1,
-		        todayBtn:  1,
-				autoclose: 1,
-				todayHighlight: 1,
-				startView: 1,
-				minView: 0,
-				maxView: 1,
 				forceParse: 0
 		    });
 </script>

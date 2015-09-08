@@ -1,5 +1,7 @@
 package entity;
 
+import java.io.Serializable;
+
 /**
  * @author : Chen
  * @fileName : entity.OrderBean.java
@@ -11,21 +13,10 @@ package entity;
  * 
  */
 
-class OrderStates {
-	// state属性应该设为public，否则不能使用类名直接访问
-	public static final int CHECKING_ORDER = 1; // 订单生成，待确认，审核中
-	public static final int ACCEPT_WAIT_PAY_ORDER = 2; // host接受订单，待付款
-	public static final int CANCEL_ORDER = 3; // 房客取消订单
-	public static final int REJECT_ORDER = 4; // 房东拒绝订单
-	public static final int WAIT_CHECKIN_ORDER = 5; // 房客已付款，待入住
-	public static final int LIVING_ORDER = 6; // 入住中
-	public static final int ACCOMPLISH_ORDER = 7; // 已完成
-
-}
-
-public class OrderBean {
+public class OrderBean implements Serializable {
+	private int order_id;
 	private String order_num;// 订单编号
-	private OrderStates states;
+	private int states;
 	private int total_price;
 	private String start_time;
 	private String end_time;
@@ -40,11 +31,11 @@ public class OrderBean {
 		this.order_num = order_num;
 	}
 
-	public OrderStates getStates() {
+	public int getStates() {
 		return states;
 	}
 
-	public void setStates(OrderStates states) {
+	public void setStates(int states) {
 		this.states = states;
 	}
 
@@ -94,6 +85,14 @@ public class OrderBean {
 				+ ", total_price=" + total_price + ", start_time=" + start_time
 				+ ", end_time=" + end_time + ", user_id=" + user_id
 				+ ", host_id=" + host_id + "]";
+	}
+
+	public int getOrder_id() {
+		return order_id;
+	}
+
+	public void setOrder_id(int order_id) {
+		this.order_id = order_id;
 	}
 
 }

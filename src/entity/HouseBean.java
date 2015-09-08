@@ -1,5 +1,7 @@
 package entity;
 
+import java.io.Serializable;
+
 /**
  * @author : Chen
  * @fileName : entity.HouseBean.java
@@ -10,7 +12,7 @@ package entity;
  * @describe :
  * 
  */
-public class HouseBean {
+public class HouseBean implements Serializable {
 
 	private int house_id;
 	private int host_id;

@@ -1,5 +1,7 @@
 package entity;
 
+import java.io.Serializable;
+
 /**
  * @author : Chen
  * @fileName : entity.UserBean.java
@@ -10,7 +12,7 @@ package entity;
  * @describe :
  * 
  */
-public class UserBean {
+public class UserBean implements Serializable {
 
 	// user表设计时，有一些属性是为空的，所以这个bean可以不完全填充？
 	private int user_id;
