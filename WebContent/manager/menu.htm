@@ -10,7 +10,21 @@ body{background:#FF0000;}
 </head>
 
 <body>
-<div><a href="user.jsp" target="showFrame">用户</a></div>
-<div><a href="house.html" target="showFrame">房屋</a></div>
+<div><a href="users.jsp" target="showFrame" id= "user" onclick="changeColor1()">用户</a></div>
+<div><a href="house.jsp" target="showFrame" id = "house"  onclick="changeColor2()">房屋</a></div>
+
+<script>
+function changeColor1()
+{
+	document.getElementById('user').style.color = "#000066";
+	document.getElementById('house').style.color = "white";
+	}
+	
+function changeColor2()
+{
+	document.getElementById('user').style.color = "white";
+	document.getElementById('house').style.color ="#000066";
+	}
+</script>
 </body>
 </html>

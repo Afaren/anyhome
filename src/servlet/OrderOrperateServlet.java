@@ -65,16 +65,16 @@ public class OrderOrperateServlet extends HttpServlet {
 
 		OrderBean orderBean = new OrderBean();
 		int state = Integer.parseInt(request.getParameter("state"));
-		OrderService orderService = new OrderService();
-		int order_id = Integer.parseInt(request.getParameter("order_id"));
-		String type = request.getParameter("type");// 标识查询订单的用户类型——host||user
-		orderBean.setOrder_id(order_id);
+
+		// String type = request.getParameter("type");// 标识查询订单的用户类型——host||user
 		switch (state) {
 		case OrderStates.CHECKING_ORDER:// 生成新订单，这里需要所有的数据
-			createNewOrder(request, response, orderBean);
+			createNewOrder(request, response);
 			break;
 		case OrderStates.SEARCH_ALL_ORDER:// 查询所有订单
-			getAllOrder(request, response, type);
+			System.out.println("查询所有订单");
+			// getAllOrder(request, response, type);
+			System.out.println("继续switch流程***********************88");
 			break;
 		case OrderStates.ACCEPT_WAIT_PAY_ORDER:
 			orderBean.setStates(OrderStates.ACCEPT_WAIT_PAY_ORDER);
@@ -97,6 +97,10 @@ public class OrderOrperateServlet extends HttpServlet {
 		default:
 			break;
 		}
+
+		int order_id = Integer.parseInt(request.getParameter("order_id"));
+		orderBean.setOrder_id(order_id);
+		OrderService orderService = new OrderService();
 		orderService.changeOrderState(orderBean);
 
 		// if (state.equals("checking")) {
@@ -115,22 +119,26 @@ public class OrderOrperateServlet extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("id"));
 
 		orderList = new OrderService().getAllOrder(type, id);
-
-		// if (type.equals("host")) {
-		// orderList = getAllOrderOfHost(id);
-		// } else {
-		// orderList = getAllOrderOfUser(id);
-		// }
+		if (orderList == null) {
+			System.out.println("orderlist 是null*******************");
+		} else {
+			System.out
+					.println("daoshigiewodjflsjdlkfjslkdjflksjdlkfjklsdjflkjsdlkfjlk");
+		}
+		for (OrderBean orderBean : orderList) {
+			System.out.println(orderBean);
+		}
 		// 封装于请求域，转发到orderManage.jsp
 		request.setAttribute("orderList", orderList);
-		response.sendRedirect("orderManage.jsp");
+		response.sendRedirect("userCenter/orderManage.jsp");
 		// TODO Auto-generated method stub
 
 	}
 
 	private void createNewOrder(HttpServletRequest request,
-			HttpServletResponse response, OrderBean orderBean) {
-
+			HttpServletResponse response) {
+		OrderBean orderBean = new OrderBean();
+		int total_price = Integer.parseInt(request.getParameter("total_price"));
 		int host_id = Integer.parseInt(request.getParameter("host_id"));
 		int user_id = Integer.parseInt(request.getParameter("user_id"));
 		String start_time = request.getParameter("start_time");
@@ -138,21 +146,28 @@ public class OrderOrperateServlet extends HttpServlet {
 
 		orderBean.setStates(OrderStates.CHECKING_ORDER);
 
+		// 这里要加上处理事件的操作**************************************************************
+
 		orderBean.setHost_id(host_id);
 		orderBean.setUser_id(user_id);
 		orderBean.setStart_time(start_time);
 		orderBean.setEnd_time(end_time);
 		orderBean.setOrder_num(user_id + "_" + System.currentTimeMillis());
-		// 还没有实现计算两天之间日期差的方法，故此虚拟总价
-		int total_price = 200;
 		orderBean.setTotal_price(total_price);
+		// 还没有实现计算两天之间日期差的方法，故此虚拟总价
+		// int total_price = 200;
 
 		System.out.println(orderBean);
 		OrderService orderService = new OrderService();
 		orderService.newOrder(orderBean);
 
 		// 这里应该重定向了，上层函数继续的话，会执行下一个函数
-
+		try {
+			response.sendRedirect("mainScreen2.jsp");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	// private void getAllOrder(HttpServletRequest request,

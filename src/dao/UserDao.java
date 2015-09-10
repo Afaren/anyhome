@@ -14,20 +14,22 @@ import entity.UserBean;
  */
 public interface UserDao {
 
-	public void resetPwd(UserBean userBean, String newPassword);
+	boolean deleteUser(int user_id);
 
-	public boolean isCorrectPwd(UserBean userBean, String password);
+	void resetPwd(UserBean userBean, String newPassword);
 
-	public boolean resetMailAndGender(int user_id, String mail, String gender);
+	boolean isCorrectPwd(UserBean userBean, String password);
+
+	boolean resetMailAndGender(int user_id, String mail, String gender);
 
 	// public boolean updateMailGenderAccount_num(String mail, String gender,
 	// String account_num);
 
-	public boolean isValidUser(String username);
+	boolean isValidUser(String username);
 
-	public boolean insertUser(UserBean user);
+	boolean insertUser(UserBean user);
 
-	public boolean userExistsQueryByPhone(String phone);
+	boolean userExistsQueryByPhone(String phone);
 
-	public UserBean queryByPhoneAndPassword(String phone, String password);
+	UserBean queryByPhoneAndPassword(String phone, String password);
 }

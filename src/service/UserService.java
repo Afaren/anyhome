@@ -1,5 +1,7 @@
 package service;
 
+import java.util.List;
+
 import dao.UserDaoImpl;
 import entity.UserBean;
 
@@ -83,5 +85,18 @@ public class UserService {
 
 		UserDaoImpl userDaoImpl = new UserDaoImpl();
 		userDaoImpl.resetPwd(userBean, newpwd);
+	}
+
+	public boolean deleteUser(int user_id) {
+
+		UserDaoImpl userDaoImpl = new UserDaoImpl();
+		boolean isDelete = userDaoImpl.deleteUser(user_id);
+		return isDelete;
+	}
+
+	public List<UserBean> getAllUser() {
+		// TODO Auto-generated method stub
+		// 这里的业务逻辑没有完善，我将其直接写在users.jsp上了。
+		return null;
 	}
 }

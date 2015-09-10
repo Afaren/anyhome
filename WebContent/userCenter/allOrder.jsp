@@ -57,14 +57,60 @@
 <!-- 获取servlet传递过来的参数 -->
 <body>
 	<div class = "navigation">
-		<li style ="background-color:#333fff"><a href="allOrder.jsp?state=<%=OrderStates.SEARCH_ALL_ORDER%>&type=host&id=${sessionScope.loginedUser.user_id}" target="showFrame">所有订单</a></li>
+		<%-- <li style ="background-color:#333fff"><a href="orderManage.jsp?state=<%=OrderStates.SEARCH_ALL_ORDER%>&type=host&id=${sessionScope.loginedUser.user_id}" target="showFrame">所有订单</a></li>
+		<li><a href="orderClassedByState.jsp?state=<%=OrderStates.CHECKING_ORDER%>&type=host&id=${sessionScope.loginedUser.user_id}" target="showFrame">待确认</a></li>
+		<li><a href="orderClassedByState.jsp?state=<%=OrderStates.ACCEPT_WAIT_PAY_ORDER%>&type=host&id=${sessionScope.loginedUser.user_id}" target="showFrame">待付款</a></li>
+		<li><a href="orderClassedByState.jsp?state=<%=OrderStates.WAIT_CHECKIN_ORDER%>&type=host&id=${sessionScope.loginedUser.user_id}" target="showFrame">待入住</a></li>
+		<li><a href="orderClassedByState.jsp?state=<%=OrderStates.ACCOMPLISH_ORDER%>&type=host&id=${sessionScope.loginedUser.user_id}" target="showFrame">已完成</a></li>
+		<li><a href="orderClassedByState.jsp?state=<%=OrderStates.CANCEL_ORDER%>&type=host&id=${sessionScope.loginedUser.user_id}" target="showFrame">已取消</a></li>
+		<li><a href="orderClassedByState.jsp?state=<%=OrderStates.ACCOMPLISH_ORDER%>&type=host&id=${sessionScope.loginedUser.user_id}" target="showFrame">已过期</a></li>
+	 --%>
+	 
+		 <li style ="background-color:#333fff"><a href="allOrder.jsp?state=<%=OrderStates.SEARCH_ALL_ORDER%>&type=host&id=${sessionScope.loginedUser.user_id}" target="showFrame">所有订单</a></li>
 		<li><a href="tobeconfirm.jsp?state=<%=OrderStates.CHECKING_ORDER%>&type=host&id=${sessionScope.loginedUser.user_id}" target="showFrame">待确认</a></li>
 		<li><a href="tobepaid.jsp?state=<%=OrderStates.ACCEPT_WAIT_PAY_ORDER%>&type=host&id=${sessionScope.loginedUser.user_id}" target="showFrame">待付款</a></li>
 		<li><a href="tobeliving.jsp?state=<%=OrderStates.WAIT_CHECKIN_ORDER%>&type=host&id=${sessionScope.loginedUser.user_id}" target="showFrame">待入住</a></li>
 		<li><a href="accomplish.jsp?state=<%=OrderStates.ACCOMPLISH_ORDER%>&type=host&id=${sessionScope.loginedUser.user_id}" target="showFrame">已完成</a></li>
 		<li><a href="cancel.jsp?state=<%=OrderStates.CANCEL_ORDER%>&type=host&id=${sessionScope.loginedUser.user_id}" target="showFrame">已取消</a></li>
-		</div><br/><br/><br/>
-<%-- <c:choose>
+		<%-- <li><a href="OrderClassedByStateServlet?state=<%=OrderStates.ACCOMPLISH_ORDER%>&type=host&id=${sessionScope.loginedUser.user_id}" target="showFrame">已过期</a></li> --%>
+	
+	 
+	 
+	 
+	 </div><br/><br/><br/>
+	<%
+				
+				
+				int id = Integer.parseInt(request.getParameter("id"));
+				List<OrderManageBean> ordersList = new ArrayList<OrderManageBean>();
+				Connection connection = DbTool.getConnection();
+				PreparedStatement prst = null;
+				String sql_query_orders_by_hostID = null;
+				ResultSet rSet = null;
+				sql_query_orders_by_hostID = "select user.phone, house.house_title, order.start_time, order.end_time, order.total_price, order.states FROM user, house, anyhome.order WHERE anyhome.order.host_id = user.user_id AND house.host_id = user.user_id AND	anyhome.order.host_id = ? ;";
+				
+				try {
+							prst = connection.prepareStatement(sql_query_orders_by_hostID);
+							prst.setInt(1, id);
+							rSet = prst.executeQuery();
+							while (rSet.next()) {
+										OrderManageBean orderManageBean = new OrderManageBean();
+										orderManageBean.setEnd_time(rSet.getString("end_time"));
+										orderManageBean.setHouse_title(rSet.getString("house_title"));
+										orderManageBean.setPhone(rSet.getString("phone"));
+										orderManageBean.setStart_time(rSet.getString("start_time"));
+										orderManageBean.setState(rSet.getInt("states"));
+										orderManageBean.setTotal_price(rSet.getInt("total_price"));
+										ordersList.add(orderManageBean);
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();//3 h
+				}finally{
+					DbTool.close(rSet, prst, connection);
+				}
+				request.setAttribute("orderList", ordersList);
+	%>
+		<c:choose>
 					<c:when test="${empty requestScope.orderList }">
 						没有订单	
 					</c:when>
@@ -77,6 +123,7 @@
 									<td align = "center">起止日期</td>
 									<td align = "center">手机号</td>
 									<td align = "center" width = "60">总价</td>
+									<td align = "center" width = "70">状态</td>
 								</tr>
 							<c:forEach var="order" items="${requestScope.orderList }" varStatus="s">
 								<tr height = "20">
@@ -85,12 +132,11 @@
 									<td>${order.start_time} - ${order.end_time}</td>
 									<td>${order.phone}</td>
 									<td>${order.total_price }</td>
+									<td>${order.state }</td>
 								</tr>
 							</c:forEach>
 							</table>
 					</div>
 					</c:otherwise>
 		</c:choose>
-	 --%>
 </body>
-</html>

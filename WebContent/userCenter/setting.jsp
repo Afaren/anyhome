@@ -68,7 +68,7 @@ function checkAccountNumber()
 </script>
 </head>
 <body>
-		 		${sessionScope.loginedUser }<!--这里出不了详细的内容 -->
+		<!-- 		${sessionScope.loginedUser }这里出不了详细的内容 -->
 
 <%
 			
@@ -77,14 +77,8 @@ function checkAccountNumber()
 				.println("****************************************************"
 						+ this.getClass().getName());
 			if(userBean!=null){
-			System.out.println("user_id: " + userBean.getUser_id());
-			System.out.println(userBean.getAccount_id());
-			System.out.println(userBean.getGender());
-			System.out.println(userBean.getMail());
-			System.out.println(userBean.getPassword());
-			System.out.println(userBean.getPhone());
-			System.out.println(userBean.getUser_type());
-			System.out.println(userBean.getUsername());
+			System.out.println(userBean);
+			
 			}
 			System.out
 				.println("****************************************************"
@@ -123,17 +117,9 @@ function checkAccountNumber()
     <input name="mail" id="Email" class="input" type="text" value="${sessionScope.loginedUser.mail }"  onblur="checkEmail()"/>
 	<div id="tip3"></div>
     </div>
-	
-	
-<!-- 
-    <div class="format">
-    账&nbsp;&nbsp;&nbsp;号：
-    <input name="account_num"  id="accountNumber" class="input" type="text" value="${sessionScope.account_num }" onblur="checkAccountNumber()" />
-	<div id="tip5"></div>
-    </div>
- -->	
+
 	<div class="but">
-    <input class="input" type="submit" value="保存" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input class="input" type="submit" value="更新" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<input class="input" type="reset" value="取消" />
     </div>
 

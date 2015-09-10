@@ -64,11 +64,6 @@ public class SearchHouseServlet extends HttpServlet {
 		String end_time = request.getParameter("end_time");
 		String numbers = request.getParameter("numbers");
 
-		out.print(whereToG0);
-		out.print(start_time);
-		out.print(end_time);
-		out.print(numbers);
-
 		HouseService houseService = new HouseService();
 		// List<HouseBean> targetHouseList = houseService.getTargetHouse(
 		// whereToG0, start_time, end_time);
@@ -89,7 +84,13 @@ public class SearchHouseServlet extends HttpServlet {
 		}
 
 		// request.getSession().setAttribute("houseList", targetHouseList);
+		// HttpSession session = request.getSession();
+
+		// 原来我一早就看到这个需求了***
 		HttpSession session = request.getSession();
+		// session.setAttribute("start_time", start_time);
+		// session.setAttribute("end_time", end_time);
+
 		session.setAttribute("houseList", targetHouseList);
 		// session.set
 		// request.setAttribute("start_time", start_time);
@@ -97,7 +98,8 @@ public class SearchHouseServlet extends HttpServlet {
 
 		session.setAttribute("start_time", start_time);
 		session.setAttribute("end_time", end_time);
-		response.sendRedirect("targetHouse.jsp");
+		// response.sendRedirect("targetHouse.jsp");
+		response.sendRedirect("houseList.jsp");
 
 	}
 }

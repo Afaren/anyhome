@@ -5,7 +5,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class CountDays {
-	private final static String DATE_PATTERN = "yyyy-MM-dd HH:mm:ss";
+	private final static String DATE_PATTERN = "yyyy-MM-dd HH:mm";
+
+	// private final static String DATE_PATTERN = "yyyy-MM-dd HH:mm:ss";
 
 	public static int getDays(String startTime, String stopTime) {
 		SimpleDateFormat format = new SimpleDateFormat(DATE_PATTERN);

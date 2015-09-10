@@ -19,9 +19,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>user jsp</title>
 <style type="text/css">
-body{background-color:#eeeeee;}
+body{background-color:#ffdead;}
 table{margin-top:100px; margin-left:200px; }
-td{border:none; width:150px;}
+td{border-width:1px; width:150px;}
 </style>
 </head>
 
@@ -67,7 +67,7 @@ td{border:none; width:150px;}
 				<h1>尚无用户注册</h1>
 			</c:when>
 			<c:otherwise>
-				<table border="1" align="center">
+				<table border="1" align="center" style="margin-top: 30px; margin-left: 100px">
 				  <tr>
 					  	<th>序号</th>
 						<th>帐户名</th>
@@ -80,8 +80,8 @@ td{border:none; width:150px;}
 				  		<td >${sta.count}</td>
 				  		<td>${user.username}</td>	
 					    <td>${user.phone}</td>
-					    <td><a href="#" style = "text-decoration:none">查看详情</a></td>
-					    <td><a href="#" style = "text-decoration:none">删除</a></td>
+			<!-- 		    <td><a href="#" style = "text-decoration:none">查看详情</a></td> -->
+					    <td><a href="../DeleteUserServlet?user_id=${user.user_id }" style = "text-decoration:none">删除</a></td>
 				  </tr>
 				  </c:forEach>
 				</table>

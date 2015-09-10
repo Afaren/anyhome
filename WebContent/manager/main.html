@@ -2,17 +2,24 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>管理员页面</title>
+<title>管理员</title>
 
 
 
-	<frameset  rows="28%,72%" noresize="noresize">
+	<frameset  rows="27%,75%" noresize="noresize">
 					
-			<frame src="adnav.htm"  noresize="noresize" >					
+			<frame src="manager/adnav.htm"  noresize="noresize" >					
+			<frameset cols="16%,84%">
+					<frame src="manager/menu.htm"  name="navigation" noresize="noresize">
+					<frame  name="showFrame"  noresize="noresize">
+			</frameset>
+			
+			<!--将所有url修改为相对于LoginServlet的url的位置  -->
+<!-- 			<frame src="adnav.htm"  noresize="noresize" >					
 			<frameset cols="16%,84%">
 					<frame src="menu.htm"  name="navigation" noresize="noresize">
-					<frame src="account.html" name="showFrame"  noresize="noresize">
-			</frameset>
+					<frame src="user.jsp"  name="showFrame"  noresize="noresize">
+			</frameset> -->
 				
 	</frameset><noframes></noframes>
 

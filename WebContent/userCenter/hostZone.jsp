@@ -1,3 +1,6 @@
+<%@page import="entity.OrderStates" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <html>
 	<head>
 		<meta charset = "utf-8">
@@ -21,15 +24,16 @@
 		}
 		</style>
 	</head>
-	
-	
 	<body bgcolor="999900" text="green">
+<%-- 	<h1>user_id = ${sessionScope.loginedUser.user_id}</h1> --%>
 		<li><a href="setting.jsp" target="showFrame" id = "inform" onclick = "changeColor1()">个人信息
 		</a></li>
-		<li><a href="orderManage.html" target="showFrame" id = "order" onclick = "changeColor2()">订单管理
+		<li><a href="orderManage.jsp" target="showFrame" id = "order" onclick = "changeColor2()">订单管理
 		</a></li>
-		<li><a href="myHouses.html" target="showFrame" id = "rel" onclick = "changeColor3()">我的房屋
+		<li><a href="myHouses.jsp?user_id=${sessionScope.loginedUser.user_id}" target="showFrame" id = "rel" onclick = "changeColor3()">我的房屋
 		</a></li>
+<!-- 		<li><a href="myHouses.html" target="showFrame" id = "rel" onclick = "changeColor3()">我的房屋
+		</a></li> -->
 		<li><a href="ResetPwd.jsp" target="showFrame" id = "screte" onclick = "changeColor4()">修改密码
 		</a></li>
 

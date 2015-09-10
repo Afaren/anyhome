@@ -9,13 +9,14 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="entity.OrderStates" %>
 <%@page import="entity.OrderManageBean" %>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<title>accomplish order  page </title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>order manage</title>
 <style type="text/css">
 	.navigation
 	{
@@ -56,6 +57,7 @@
 </head>
 <!-- 获取servlet传递过来的参数 -->
 <body>
+<!-- 这里插入一样的表头 -->
 	<div class = "navigation">
 		<li style ="background-color:#333fff"><a href="allOrder.jsp?state=<%=OrderStates.SEARCH_ALL_ORDER%>&type=host&id=${sessionScope.loginedUser.user_id}" target="showFrame">所有订单</a></li>
 		<li><a href="tobeconfirm.jsp?state=<%=OrderStates.CHECKING_ORDER%>&type=host&id=${sessionScope.loginedUser.user_id}" target="showFrame">待确认</a></li>
@@ -63,8 +65,40 @@
 		<li><a href="tobeliving.jsp?state=<%=OrderStates.WAIT_CHECKIN_ORDER%>&type=host&id=${sessionScope.loginedUser.user_id}" target="showFrame">待入住</a></li>
 		<li><a href="accomplish.jsp?state=<%=OrderStates.ACCOMPLISH_ORDER%>&type=host&id=${sessionScope.loginedUser.user_id}" target="showFrame">已完成</a></li>
 		<li><a href="cancel.jsp?state=<%=OrderStates.CANCEL_ORDER%>&type=host&id=${sessionScope.loginedUser.user_id}" target="showFrame">已取消</a></li>
-		</div><br/><br/><br/>
-<%-- <c:choose>
+	
+	<br/><br/><br/>
+	<%
+				int state = Integer.parseInt(request.getParameter("state"));
+				String type = request.getParameter("type");
+				int id = Integer.parseInt(request.getParameter("id"));
+				List<OrderManageBean> ordersList = new ArrayList<OrderManageBean>();
+				Connection connection = DbTool.getConnection();
+				PreparedStatement prst = null;
+				String sql_query_orders_by_id = null;
+				ResultSet rSet = null;
+				sql_query_orders_by_id = "select user.phone, house.house_title, order.start_time, order.end_time, order.total_price FROM user, house, anyhome.order WHERE anyhome.order.host_id = user.user_id AND house.host_id = user.user_id AND	anyhome.order.host_id = ? AND order.states = ?;";
+				try {
+							prst = connection.prepareStatement(sql_query_orders_by_id);
+							prst.setInt(1, id);
+							prst.setInt(2, state);
+							rSet = prst.executeQuery();
+							while (rSet.next()) {
+										OrderManageBean orderManageBean = new OrderManageBean();
+										orderManageBean.setEnd_time(rSet.getString("end_time"));
+										orderManageBean.setHouse_title(rSet.getString("house_title"));
+										orderManageBean.setPhone(rSet.getString("phone"));
+										orderManageBean.setStart_time(rSet.getString("start_time"));
+										orderManageBean.setTotal_price(rSet.getInt("total_price"));
+										ordersList.add(orderManageBean);
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();//3 h
+				}finally{
+					DbTool.close(rSet, prst, connection);
+				}
+				request.setAttribute("orderList", ordersList);
+	%> 
+		<c:choose>
 					<c:when test="${empty requestScope.orderList }">
 						没有订单	
 					</c:when>
@@ -91,6 +125,4 @@
 					</div>
 					</c:otherwise>
 		</c:choose>
-	 --%>
 </body>
-</html>

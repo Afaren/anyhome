@@ -14,10 +14,10 @@ import java.io.Serializable;
  */
 
 class States implements Serializable {
-	public static final int HOUSE_CREATED = 0;
-	public static final int HOUSE_REVIEWING = 1;
-	public static final int HOUSE_RELEASED = 2;
-	public static final int HOUSE_REJECT = 3;
+	public static final int HOUSE_CREATED = 1;// 创建房屋
+	public static final int HOUSE_REVIEWING = 2;// 审核中
+	public static final int HOUSE_RELEASED = 3;// 成功发布房屋
+	public static final int HOUSE_REJECT = 4;// 发布被拒绝
 }
 
 public class HouseStateBean implements Serializable {

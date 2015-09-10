@@ -52,7 +52,7 @@ public class LoginServlet extends HttpServlet {
 	}
 
 	protected void processRequest(HttpServletRequest request,
-			HttpServletResponse response) throws IOException {
+			HttpServletResponse response) throws IOException, ServletException {
 
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
@@ -82,13 +82,7 @@ public class LoginServlet extends HttpServlet {
 			System.out
 					.println("****************************************************"
 							+ this.getClass().getName());
-			System.out.println(user.getAccount_id());
-			System.out.println(user.getGender());
-			System.out.println(user.getMail());
-			System.out.println(user.getPassword());
-			System.out.println(user.getPhone());
-			System.out.println(user.getUser_type());
-			System.out.println(user.getUsername());
+			System.out.println(user);
 			System.out
 					.println("****************************************************"
 							+ this.getClass().getName());
@@ -96,13 +90,11 @@ public class LoginServlet extends HttpServlet {
 			if (user.getUser_type() == 0) {
 				response.sendRedirect("mainScreen2.jsp");
 			} else {
-				try {
-					request.getRequestDispatcher("WEB-INF/manager/main.jsp")
-							.forward(request, response);
-				} catch (ServletException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				request.getRequestDispatcher("manager/main.html").forward(
+						request, response);
+				// request.getRequestDispatcher("/manager/main.html").forward(
+				// request, response);
+				// response.sendRedirect("manager/house.jsp");
 			}
 
 		} else if (userService.userExists(tempUserBean)) {

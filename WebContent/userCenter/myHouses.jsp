@@ -3,6 +3,7 @@
 <%@page import="java.sql.Connection" %>
 <%@page import="java.sql.PreparedStatement" %>
 <%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.ResultSet" %>
 <%@page import="java.sql.SQLException" %>
 <%@page import="java.util.ArrayList" %>
 <%@page import="java.util.List"%>
@@ -17,27 +18,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>house.html</title>
-<style>
-	  body{background-color:#ffdead;}
-	  table{border:none; margin-top:100px; margin-left:200px; }
-	  td{ width:150px;}
-</style>
+<title>my house page</title>
 </head>
-
 <body>
-
 <%
-			List<HouseBean> targetHouseList = new ArrayList<HouseBean>();
+			List<HouseBean> myHouseList = new ArrayList<HouseBean>();
 			Connection connection = DbTool.getConnection();
 			PreparedStatement prst = null;
 			ResultSet rSet = null;
-			String targetAddress = "";
-			String sql_queryTargetHouse = "SELECT * FROM HOUSE WHERE address LIKE ?";
+			int host_id = Integer.parseInt(request.getParameter("user_id"));
+			String sql_queryHouseByHost_id = "SELECT * FROM HOUSE WHERE host_id=?";
 			try {
-				prst = connection.prepareStatement(sql_queryTargetHouse);
+				prst = connection.prepareStatement(sql_queryHouseByHost_id);
 				// prst.setString(1, targetAddress);
-				prst.setString(1, "%" + targetAddress + "%");// 模糊查询
+				prst.setInt(1, host_id);
 				rSet = prst.executeQuery();
 				while (rSet.next()) {
 					HouseBean houseBean = new HouseBean();
@@ -49,40 +43,34 @@
 					houseBean.setNote(rSet.getString("note"));
 					houseBean.setPhoto_path(rSet.getString("photo_path"));
 					houseBean.setPrice(rSet.getInt("price"));
-					targetHouseList.add(houseBean);
+					myHouseList.add(houseBean);
 				}
 			} catch (SQLException e) {
 				// TODO: handle exception
 				e.printStackTrace();
 			}			
-			request.setAttribute("houseList", targetHouseList);
+			request.setAttribute("houseList", myHouseList);
 %>
-
-
-
-
-
-
 		<c:choose>
 				<c:when test="${empty requestScope.houseList }">
 					房屋列表为空
 				</c:when>
 				<c:otherwise>
-					<table border="1" align="center" style="margin-top: 30px; margin-left: 100px">
+					<table border="1" align="center">
 						<tr>
-							<td>房东名</td>
+								
 							<td>房屋名称</td>
 							<td>详细信息</td>
-							<td>xxx</td>
-							<td>xxx</td>
+							<td>XXXX</td>
+							<td>XXXX</td>
 						</tr>
 						<c:forEach var="house" items="${requestScope.houseList }" varStatus="s">
 						 <tr>
-								<td>房东名</td>
+						
 								<td>${house.house_title}</td>
-								<td><a href="houseDetail.jsp?house_id=${house.house_id }">查看详情</a></td>
-			 				    <td><a href="#">通过审核</a></td><!-- href=houseStateServlet?state=tongguoshenghe -->
-			 			        <td><a href="#">拒绝发布</td>		 <!-- href=houseStateServlet?state=tongguoshenghe -->
+								<td>${house.description }</td>
+			 				    <td>XXXX</td><!-- href=houseStateServlet?state=tongguoshenghe -->
+			 			        <td>XXXX</td>		 <!-- href=houseStateServlet?state=tongguoshenghe -->
 						</tr>
 						</c:forEach>
 					</table>

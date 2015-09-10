@@ -256,6 +256,27 @@ public class UserDaoImpl implements UserDao {
 
 	}
 
+	@Override
+	public boolean deleteUser(int user_id) {
+
+		int result = 0;
+		Connection connection = DbTool.getConnection();
+		PreparedStatement prst = null;
+		String sql_deleteUserByUserID = "DELETE FROM anyhome.user WHERE user_id = ?";
+		try {
+			prst = connection.prepareStatement(sql_deleteUserByUserID);
+			prst.setInt(1, user_id);
+			result = prst.executeUpdate();
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		if (result != 0) {
+			return true;
+		}
+		return false;
+	}
+
 	// @Override
 	// /*
 	// * 此更新操作涉及两张表 user & account

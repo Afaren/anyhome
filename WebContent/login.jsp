@@ -102,7 +102,7 @@ a
   
   <div id="submit">
     <div id="submit2">
-	  <input id="submit3" type="submit" name="submit" value="登录">
+	  <input id="submit3" type="submit" name="submit" target="showFrame" value="登录">
 	</div>
   </div>
  </form>
