@@ -9,7 +9,6 @@ import java.util.List;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,14 +24,13 @@ import entity.UserBean;
 /**
  * Servlet implementation class ReleaseHouseServlet2
  */
-@WebServlet("/ReleaseHouseServlet2")
-public class ReleaseHouseServlet2 extends HttpServlet {
+// @WebServlet("/ReleaseHouseServlet2")
+public class ReleaseHouseServlet2_old extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	// private final String filePath = "E:/ahImg";// 文件上传路径
 	// private final String tempFilePath = "E:/ahTemp";// 文件临时存储路径
-	// private final String filePath = util.Config.filePath;
+	private final String filePath = util.Config.filePath;
 	private final String tempFilePath = util.Config.tempFilePath;
-	private final String imgUploadPath = util.Config.imgUploadPath;
 
 	private String s_province;
 	private String s_city;
@@ -47,7 +45,7 @@ public class ReleaseHouseServlet2 extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ReleaseHouseServlet2() {
+	public ReleaseHouseServlet2_old() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -77,7 +75,7 @@ public class ReleaseHouseServlet2 extends HttpServlet {
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
-		File saveDir = new File(imgUploadPath);
+		File saveDir = new File(filePath);
 		// 如果目录不存在，就创建目录
 		if (!saveDir.exists()) {
 			saveDir.mkdir();
@@ -99,7 +97,7 @@ public class ReleaseHouseServlet2 extends HttpServlet {
 		// ******************************修改filePath**********************************
 		String filePath_2 = request.getSession().getServletContext()
 				.getRealPath("/")
-				+ imgUploadPath;
+				+ filePath;
 		try {
 			DiskFileItemFactory factory = new DiskFileItemFactory();
 			// 设置缓冲区大小
@@ -188,9 +186,7 @@ public class ReleaseHouseServlet2 extends HttpServlet {
 		String filename = item.getName();
 		// System.out.println("filename: " + filename);
 		int index = filename.lastIndexOf(".");// 获取尾缀
-		// filename = houseBean.getHouse_title() + System.currentTimeMillis()
-		// + filename.substring(index, filename.length());// 更改图片名，加上系统时间使其唯一
-		filename = "anyhome_" + System.currentTimeMillis()
+		filename = houseBean.getHouse_title() + System.currentTimeMillis()
 				+ filename.substring(index, filename.length());// 更改图片名，加上系统时间使其唯一
 		long fileSize = item.getSize();
 		System.out.println("filename: after " + filename);
@@ -200,8 +196,8 @@ public class ReleaseHouseServlet2 extends HttpServlet {
 			return;
 		}
 		System.out.println("after  turn filename: " + filename);
-		File uploaddedFile = new File(imgUploadPath + "/" + filename);
-		System.out.println(imgUploadPath + "/" + filename);
+		File uploaddedFile = new File(filePath + "/" + filename);
+		System.out.println(filePath + "/" + filename);
 		item.write(uploaddedFile);// 写入硬盘
 
 		outNet.print(filename + "is saved");
@@ -237,9 +233,8 @@ public class ReleaseHouseServlet2 extends HttpServlet {
 			return;
 		}
 		System.out.println("after  turn filename: " + filename);
-		File uploaddedFile = new File(imgUploadPath + "\\" + filename);
-		// System.out.println(filePath + "\\" + filename);
-		System.out.println(imgUploadPath + "\\" + filename);
+		File uploaddedFile = new File(filePath + "\\" + filename);
+		System.out.println(filePath + "\\" + filename);
 		item.write(uploaddedFile);
 
 		outNet.print(filename + "is saved");

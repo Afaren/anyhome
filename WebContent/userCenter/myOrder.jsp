@@ -19,6 +19,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style>
+body
+	{
+		background-color: #f6ffff;
+	}
+.all
+{
+margin-top:50px;
+margin-left:100px;
+}
+</style>
 </head>
 <body>
 <%

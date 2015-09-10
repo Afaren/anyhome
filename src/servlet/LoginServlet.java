@@ -77,20 +77,20 @@ public class LoginServlet extends HttpServlet {
 			// 封装到会话，redirect到主页
 			request.getSession().setAttribute("loginedUser", user);
 
-			System.out.println("跳转到home");
-			// 打印user内容，看是否正确box
-			System.out
-					.println("****************************************************"
-							+ this.getClass().getName());
-			System.out.println(user);
-			System.out
-					.println("****************************************************"
-							+ this.getClass().getName());
+			// System.out.println("跳转到home");
+			// // 打印user内容，看是否正确box
+			// System.out
+			// .println("****************************************************"
+			// + this.getClass().getName());
+			// System.out.println(user);
+			// System.out
+			// .println("****************************************************"
+			// + this.getClass().getName());
 
 			if (user.getUser_type() == 0) {
 				response.sendRedirect("mainScreen2.jsp");
 			} else {
-				request.getRequestDispatcher("manager/main.html").forward(
+				request.getRequestDispatcher("manager/main.jsp").forward(
 						request, response);
 				// request.getRequestDispatcher("/manager/main.html").forward(
 				// request, response);
@@ -98,7 +98,7 @@ public class LoginServlet extends HttpServlet {
 			}
 
 		} else if (userService.userExists(tempUserBean)) {
-			out.print("<h2>用户名或密码错误，请重新登录</h2>");// 提示信息可能需要封装在会话域，传递到login.jsp
+			out.print("<h2 style=\"color:white\">用户名或密码错误，请重新登录</h2>");// 提示信息可能需要封装在会话域，传递到login.jsp
 
 			try {
 				request.getRequestDispatcher("login.jsp").include(request,
@@ -110,12 +110,12 @@ public class LoginServlet extends HttpServlet {
 			// 不存在这个用户，跳转到注册页面
 			request.getSession(false).setAttribute(
 					"unlogin_message",
-					"<h1 align=\"center\">用户" + tempUserBean.getPhone()
-							+ "  不存在，请注册</h1>");
+					"<h1 style=\"color:white\" align=\"center\">用户"
+							+ tempUserBean.getPhone() + "  不存在，请注册</h1>");
 			response.sendRedirect("sign_up.jsp");
 		}
-		out.println("phone: " + phone + "\r\n");
-		out.print("   password: " + password);
+		// out.println("phone: " + phone + "\r\n");
+		// out.print("   password: " + password);
 
 		System.out.println("用户登录-------login_password: "
 				+ password

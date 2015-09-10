@@ -28,8 +28,8 @@
 		</div>
 
 		<div class = "left" style = "padding-top:15px">
-			<a href="" style = "font-size:32px;color:white;margin-left:20px;padding-top:100px;list-style-type: none;text-decoration: none">退出</a>
-		</div>
+			<a href="exit.jsp"  target="_top" style = "font-size:32px;color:white;margin-left:20px;padding-top:100px;list-style-type: none;text-decoration: none">退出</a>
+		</div> 
 		<div class = "slogan">
 			<h1>四海一家</h1>
 		</div>

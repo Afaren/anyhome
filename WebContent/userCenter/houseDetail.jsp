@@ -1,3 +1,5 @@
+
+
 <%@page import="util.DbTool" %>
 <%@page import="java.sql.Connection" %>
 <%@page import="java.sql.PreparedStatement" %>
@@ -56,7 +58,7 @@
 			PreparedStatement prst = null;
 			ResultSet rSet = null;
 			int house_id = Integer.parseInt(request.getParameter("house_id"));
-			String sql_queryHouse_by_houseID  = "SELECT photo_path, house_title, description, note, user.phone, price  FROM anyhome.house, anyhome.user WHERE house_id = ?";
+			String sql_queryHouse_by_houseID  = "SELECT house_title, description, note, address, price  FROM anyhome.house WHERE house_id = ?";
 	//		HouseBean houseBean = new HouseBean();
 			List<String > houseDetails = new ArrayList();
 			try {
@@ -67,51 +69,38 @@
 				rSet = prst.executeQuery();
 				if (rSet.next()) {
 					houseDetails.add(rSet.getString("description"));
-					houseDetails.add(rSet.getString("user.phone"));
+					houseDetails.add(rSet.getString("address"));
 					houseDetails.add(new Integer(rSet.getInt("price")).toString());
 					houseDetails.add(rSet.getString("house_title"));
 					houseDetails.add(rSet.getString("note"));
-					houseDetails.add("../upload/" + rSet.getString("photo_path")  );//5  这里的路径得改
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
-			}			
+			}
 			request.setAttribute("houseDetails", houseDetails);
-			System.out.println(houseDetails+"************************************");
 %>
 
 
-		<%List<String> houseDet = (List<String>)request.getAttribute("houseDetails"); %>
 
-		<div class = "picture">
-				<img src="<%=houseDet.get(5) %>" alt="picture">
-		</div> 
 
-	<!-- <div class = "picture">
+	<div class = "picture">
 		<img src="../images/main_picture/s.jpg" alt="picture">
-	</div> -->
+	</div>
 
 	<div class = "informain">
 		
+		<%List<String> houseDet = (List<String>)request.getAttribute("houseDetails"); %>
 		
-		
-		<%	
-						System.out.println(houseDet);
-						System.out.println(houseDet.get(1));
+		<% System.out.println(houseDet);
+		System.out.println(houseDet.get(1));
 		%>
 		<p>房屋名：<%=houseDet.get(3) %></p>
 		<p>价格：<%=houseDet.get(2) %></p>
-		<p>房东电话：<%=houseDet.get(1) %></p>
+		<p>地址：<%=houseDet.get(1) %></p>
 		<p>描述：<%=houseDet.get(0) %></p>
 		<p>备注：<%=houseDet.get(4)==null?"无":houseDet.get(4)%></p>
 
-<%-- 		<p>房屋id：${param.house.house_id}</p>
-		<p>房屋名：${param.house.house_title}</p>
-		<p>价格：${param.house.price}</p>
-		<p>描述：${param.house.description}</p>
-		<p>xxxxx</p>
-		<p>xxxx</p>
-		<p>xxxx</p> --%>
+
 	</div>
 </body>
 </html>

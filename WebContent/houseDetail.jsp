@@ -57,7 +57,7 @@
 			PreparedStatement prst = null;
 			ResultSet rSet = null;
 			int house_id = Integer.parseInt(request.getParameter("house_id"));
-			String sql_queryHouse_by_houseID  = "SELECT house_title, description, note, user.phone, price, user.user_id FROM anyhome.house, anyhome.user WHERE house_id = ? AND user.user_id = house.host_id";
+			String sql_queryHouse_by_houseID  = "SELECT photo_path, address, house_title, description, note, user.phone, price, user.user_id FROM anyhome.house, anyhome.user WHERE house_id = ? AND user.user_id = house.host_id";
 	//		HouseBean houseBean = new HouseBean();
 			List<String > houseDetails = new ArrayList();
 			try {
@@ -73,6 +73,8 @@
 					houseDetails.add(rSet.getString("house_title"));//3
 					houseDetails.add(rSet.getString("note"));//4
 					houseDetails.add(new Integer(rSet.getInt("user_id")).toString());//5
+					houseDetails.add(rSet.getString("address"));//6
+					houseDetails.add("upload/" + rSet.getString("photo_path")  );//7
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -81,31 +83,33 @@
 			System.out.println(houseDetails+"************************************");
 %>
 
-
-
-
-	<div class = "picture">
-		<img src="images/main_picture/s.jpg" alt="picture">
-	</div>
-
-	<div class = "informain">
-		
-		<%
-		
-		
+	<%
 					int days = CountDays.getDays((String)session.getAttribute("start_time"),(String)session.getAttribute("end_time"));
-		
 					List<String> houseDet = (List<String>)request.getAttribute("houseDetails"); 
 					int total_price = days*Integer.parseInt(houseDet.get(2));
 					System.out.println(days);
-		%>
-		
-		<% System.out.println(houseDet);
-		System.out.println(houseDet.get(1));
+	%>
+
+
+		<div class = "picture">
+				<img src="<%=houseDet.get(7) %>" alt="picture">
+		</div> 
+
+	<div class = "informain">
+	
+	
+		<!-- <div class = "picture">
+		<img src="images/main_picture/s.jpg" alt="picture"></div> -->
+	
+	
+		<% 
+				System.out.println(houseDet);
+				System.out.println(houseDet.get(1));
 		%>
 		<p>房屋名：<%=houseDet.get(3) %></p>
 		<p>日价格：<%=houseDet.get(2) %></p>
 		<p>房东电话：<%=houseDet.get(1) %></p>
+		<p>地址: <%=houseDet.get(6)%></p>
 		<p>描述：<%=houseDet.get(0) %></p>
 		<p>备注：<%=houseDet.get(4)==null?"无":houseDet.get(4)%></p>
 		<p>总价: <%=total_price%></p>
@@ -125,6 +129,7 @@
 			
 			<input type="submit" name="确认预订" />
 		</form>
+	</div> 
 		<!-- <a href="OrderOrperateServlet?">确认预订</a> 这里应该写个btn，submit-->
 		
 <%-- 		<p>房屋id：${param.house.house_id}</p>

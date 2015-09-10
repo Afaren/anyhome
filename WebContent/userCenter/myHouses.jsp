@@ -69,7 +69,7 @@
 						
 								<td>${house.house_title}</td>
 								<td>${house.description }</td>
-			 				    <td>XXXX</td><!-- href=houseStateServlet?state=tongguoshenghe -->
+			 				   <td><a href="houseDetail.jsp?house_id=${house.house_id }" target="showFrame">查看详情</a></td><!-- href=houseStateServlet?state=tongguoshenghe -->
 			 			        <td>XXXX</td>		 <!-- href=houseStateServlet?state=tongguoshenghe -->
 						</tr>
 						</c:forEach>

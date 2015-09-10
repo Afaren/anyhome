@@ -87,7 +87,7 @@ public class SignUpServlet extends HttpServlet {
 
 			response.sendRedirect("login.jsp");
 		} else {
-			out.print("<h2>用户名已存在，请选用其它用户名</h2>");
+			out.print("<h2 style=\"color:white\">用户名已存在，请选用其它用户名</h2>");
 			try {
 				request.getRequestDispatcher("sign_up.jsp").include(request,
 						response);
