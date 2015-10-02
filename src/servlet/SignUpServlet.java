@@ -100,9 +100,9 @@ public class SignUpServlet extends HttpServlet {
 			// response.sendRedirect("sign_up.jsp");
 
 		}
-		out.print("username: " + username);
-		out.print("   password: " + password);
-		out.print("   phone: " + phone);
+		// out.print("username: " + username);
+		// out.print("   password: " + password);
+		// out.print("   phone: " + phone);
 		System.out.println("ÓÃ»§×¢²á-------username: "
 				+ username
 				+ "  password: "

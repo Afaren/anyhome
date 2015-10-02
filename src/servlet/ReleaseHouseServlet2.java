@@ -97,13 +97,13 @@ public class ReleaseHouseServlet2 extends HttpServlet {
 		HouseBean houseBean = new HouseBean();// 各字段在两个函数中填充
 
 		// ******************************修改filePath**********************************
-		String filePath_2 = request.getSession().getServletContext()
-				.getRealPath("/")
-				+ imgUploadPath;
+		// String filePath_2 = request.getSession().getServletContext()
+		// .getRealPath("/")
+		// + imgUploadPath;
 		try {
 			DiskFileItemFactory factory = new DiskFileItemFactory();
 			// 设置缓冲区大小
-			factory.setSizeThreshold(4 * 1024);
+			factory.setSizeThreshold(10 * 4 * 1024);
 			// 设置临时目录
 			factory.setRepository(new File(tempFilePath));
 			// 文件上传器
@@ -201,7 +201,9 @@ public class ReleaseHouseServlet2 extends HttpServlet {
 		}
 		System.out.println("after  turn filename: " + filename);
 		File uploaddedFile = new File(imgUploadPath + "/" + filename);
-		System.out.println(imgUploadPath + "/" + filename);
+		System.out
+				.println(uploaddedFile
+						+ "上传图片********************************************************");
 		item.write(uploaddedFile);// 写入硬盘
 
 		outNet.print(filename + "is saved");

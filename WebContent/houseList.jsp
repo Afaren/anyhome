@@ -59,7 +59,7 @@ a
 				<c:otherwise>
 						<c:forEach var="house" items="${sessionScope.houseList }" varStatus="s">
 						  	<div class="main" onClick="window.location.href='houseDetail.jsp?house_id=${house.house_id}'">
-						  		<a href="houseDetail.jsp?house_id=${house.house_id}"><img  id="img_left" src="images/main_picture/s.jpg" alt="picture" width = "250" height = "250"/></a>
+						  		<a href="houseDetail.jsp?house_id=${house.house_id}"><img  id="img_left" src="upload/${house.photo_path }" alt="picture" width = "250" height = "250"/></a>
 						  		<a href="houseDetail.jsp?house_id=${house.house_id}"><p>名称: ${house.house_title}</p>价格: ${house.price}
 						  		</a>
 						  	</div>

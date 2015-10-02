@@ -71,17 +71,17 @@ margin-left:100px;
 					</c:when>
 					<c:otherwise>
 						<div class = "all">
-							<table width="715" height = "20px" bordercolor="#000000" cellpadding="0" border="1">
+							<table width="715" height = "20px" bordercolor="#000000" cellpadding="0" border="1" >
 								<tr>
 									<td align = "center" width = "45">序号</td>
 									<td align = "center">房屋名字</td>
 									<td align = "center">起止日期</td>
-									<td align = "center">手机号</td>
+									<td align = "center">房东手机</td>
 									<td align = "center" width = "60">总价</td>
-									<td>状态</td>
+									<td align = "center" >人数</td>
 								</tr>
 							<c:forEach var="order" items="${requestScope.orderList }" varStatus="s">
-								<tr height = "20">
+								<tr align = "center"  height = "20">
 									<td>${s.count }</td>
 									<td>${order.house_title }</td>
 									<td>${order.start_time} - ${order.end_time}</td>

@@ -98,7 +98,7 @@ public class LoginServlet extends HttpServlet {
 			}
 
 		} else if (userService.userExists(tempUserBean)) {
-			out.print("<h2 style=\"color:white\">用户名或密码错误，请重新登录</h2>");// 提示信息可能需要封装在会话域，传递到login.jsp
+			out.print("<h2 align=\"center\"  style=\"color:white\">用户名或密码错误，请重新登录</h2>");// 提示信息可能需要封装在会话域，传递到login.jsp
 
 			try {
 				request.getRequestDispatcher("login.jsp").include(request,

@@ -10,10 +10,10 @@
 
 	<frameset  rows="28%,72%" noresize="noresize">
 					
-	<frame src="adnav.htm"  noresize="noresize" >					
+	<frame src="manager/adnav.htm"  noresize="noresize" >					
 	<frameset cols="16%,84%">
-	<frame src="menu.htm"  name="navigation" noresize="noresize">
-	<frame src="users.jsp" name="showFrame"  noresize="noresize">
+	<frame src="manager/menu.htm"  name="navigation" noresize="noresize">
+	<frame  name="showFrame"  noresize="noresize">
 	</frameset>
 				
 	</frameset><noframes></noframes>

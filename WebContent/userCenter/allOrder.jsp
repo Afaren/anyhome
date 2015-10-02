@@ -93,6 +93,11 @@
 							prst = connection.prepareStatement(sql_query_orders_by_hostID);
 							prst.setInt(1, id);
 							rSet = prst.executeQuery();
+					
+							//设置state，以中文保存显示订单状态
+								int states = 0;
+				
+								String stateShowByChinese = null;
 							while (rSet.next()) {
 										OrderManageBean orderManageBean = new OrderManageBean();
 										orderManageBean.setEnd_time(rSet.getString("end_time"));
@@ -100,15 +105,45 @@
 										orderManageBean.setPhone(rSet.getString("phone"));
 										orderManageBean.setStart_time(rSet.getString("start_time"));
 										orderManageBean.setState(rSet.getInt("states"));
+										
 										orderManageBean.setTotal_price(rSet.getInt("total_price"));
+										if(states==1 || states==0){
+											stateShowByChinese = "待确认";
+										}else if ( states==2){
+											stateShowByChinese = "待付款";
+										}else if( states == 3){
+											stateShowByChinese = "房客取消";
+										}else if (states == 4){
+											stateShowByChinese = "拒绝";
+										}else if (states==5){
+											stateShowByChinese = 	"待入住";
+										}else if(states==6){
+											stateShowByChinese = "入住中";
+										}else if (states==7){
+											stateShowByChinese = "已完成";
+										}
+										
+										orderManageBean.setStateShowByChinese(stateShowByChinese	);
+										
 										ordersList.add(orderManageBean);
+										
+										
 					}
 				} catch (SQLException e) {
 					e.printStackTrace();//3 h
 				}finally{
 					DbTool.close(rSet, prst, connection);
 				}
+				//设置state，以中文保存显示订单状态
+				
 				request.setAttribute("orderList", ordersList);
+	%>
+	<%
+				//设置state，以中文保存显示订单状态
+			
+				
+	
+	
 	%>
 		<c:choose>
 					<c:when test="${empty requestScope.orderList }">
@@ -124,6 +159,7 @@
 									<td align = "center">手机号</td>
 									<td align = "center" width = "60">总价</td>
 									<td align = "center" width = "70">状态</td>
+									
 								</tr>
 							<c:forEach var="order" items="${requestScope.orderList }" varStatus="s">
 								<tr height = "20">
@@ -132,7 +168,7 @@
 									<td>${order.start_time} - ${order.end_time}</td>
 									<td>${order.phone}</td>
 									<td>${order.total_price }</td>
-									<td>${order.state }</td>
+									<td>${order.stateShowByChinese }</td>
 								</tr>
 							</c:forEach>
 							</table>

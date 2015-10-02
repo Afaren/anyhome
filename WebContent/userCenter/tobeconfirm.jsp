@@ -75,7 +75,7 @@
 				PreparedStatement prst = null;
 				String sql_query_orders_by_id = null;
 				ResultSet rSet = null;
-				sql_query_orders_by_id = "select user.phone, house.house_title, order.start_time, order.end_time, order.total_price FROM user, house, anyhome.order WHERE anyhome.order.host_id = user.user_id AND house.host_id = user.user_id AND	anyhome.order.host_id = ? AND order.states = ?;";
+				sql_query_orders_by_id = "select order_id, user.phone, house.house_title, order.start_time, order.end_time, order.total_price FROM user, house, anyhome.order WHERE anyhome.order.host_id = user.user_id AND house.host_id = user.user_id AND	anyhome.order.host_id = ? AND order.states = ?;";
 				try {
 							prst = connection.prepareStatement(sql_query_orders_by_id);
 							prst.setInt(1, id);
@@ -88,6 +88,7 @@
 										orderManageBean.setPhone(rSet.getString("phone"));
 										orderManageBean.setStart_time(rSet.getString("start_time"));
 										orderManageBean.setTotal_price(rSet.getInt("total_price"));
+										orderManageBean.setOrder_id(rSet.getInt("order_id"));
 										ordersList.add(orderManageBean);
 					}
 				} catch (SQLException e) {
@@ -110,6 +111,7 @@
 									<td align = "center">起止日期</td>
 									<td align = "center">手机号</td>
 									<td align = "center" width = "60">总价</td>
+									<td align="center" >确认</td>
 								</tr>
 							<c:forEach var="order" items="${requestScope.orderList }" varStatus="s">
 								<tr height = "20">
@@ -118,6 +120,7 @@
 									<td>${order.start_time} - ${order.end_time}</td>
 									<td>${order.phone}</td>
 									<td>${order.total_price }</td>
+									<td><a href="../OrderOrperateServlet?order_id=${order.order_id }&state=2" >接受订单</a></td>
 								</tr>
 							</c:forEach>
 							</table>

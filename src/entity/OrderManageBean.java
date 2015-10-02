@@ -1,5 +1,7 @@
 package entity;
 
+import java.io.Serializable;
+
 /**
  * @author : Chen
  * @fileName : entity.OrderManageBean.java
@@ -10,13 +12,15 @@ package entity;
  * @describe :
  * 
  */
-public class OrderManageBean {
+public class OrderManageBean implements Serializable {
 	private String phone;
 	private String house_title;
 	private String start_time;
 	private String end_time;
 	private int total_price;
 	private int state;
+	private String stateShowByChinese;
+	private int order_id;
 
 	public String getPhone() {
 		return phone;
@@ -72,5 +76,21 @@ public class OrderManageBean {
 				+ house_title + ", start_time=" + start_time + ", end_time="
 				+ end_time + ", total_price=" + total_price + ", state="
 				+ state + "]";
+	}
+
+	public String getStateShowByChinese() {
+		return stateShowByChinese;
+	}
+
+	public void setStateShowByChinese(String stateShowByChinese) {
+		this.stateShowByChinese = stateShowByChinese;
+	}
+
+	public int getOrder_id() {
+		return order_id;
+	}
+
+	public void setOrder_id(int order_id) {
+		this.order_id = order_id;
 	}
 }

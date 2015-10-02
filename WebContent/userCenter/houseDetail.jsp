@@ -58,7 +58,7 @@
 			PreparedStatement prst = null;
 			ResultSet rSet = null;
 			int house_id = Integer.parseInt(request.getParameter("house_id"));
-			String sql_queryHouse_by_houseID  = "SELECT house_title, description, note, address, price  FROM anyhome.house WHERE house_id = ?";
+			String sql_queryHouse_by_houseID  = "SELECT photo_path, house_title, description, note, address, price  FROM anyhome.house WHERE house_id = ?";
 	//		HouseBean houseBean = new HouseBean();
 			List<String > houseDetails = new ArrayList();
 			try {
@@ -73,23 +73,30 @@
 					houseDetails.add(new Integer(rSet.getInt("price")).toString());
 					houseDetails.add(rSet.getString("house_title"));
 					houseDetails.add(rSet.getString("note"));
+					houseDetails.add("../upload/" + rSet.getString("photo_path")  );//5  这里的路径得改
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 			request.setAttribute("houseDetails", houseDetails);
 %>
+		
+		<%List<String> houseDet = (List<String>)request.getAttribute("houseDetails"); %>
+		
+		
+		<div class = "picture">
+				<img src="<%=houseDet.get(5) %>" alt="picture">
+		</div> 
 
 
 
-
-	<div class = "picture">
+	<!-- <div class = "picture">
 		<img src="../images/main_picture/s.jpg" alt="picture">
-	</div>
+	</div> -->
 
 	<div class = "informain">
 		
-		<%List<String> houseDet = (List<String>)request.getAttribute("houseDetails"); %>
+	
 		
 		<% System.out.println(houseDet);
 		System.out.println(houseDet.get(1));

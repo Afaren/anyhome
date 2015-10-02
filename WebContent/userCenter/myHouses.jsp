@@ -61,8 +61,8 @@
 								
 							<td>房屋名称</td>
 							<td>详细信息</td>
-							<td>XXXX</td>
-							<td>XXXX</td>
+							<td>查看详情</td>
+							<!-- <td>XXXX</td> -->
 						</tr>
 						<c:forEach var="house" items="${requestScope.houseList }" varStatus="s">
 						 <tr>
@@ -70,7 +70,7 @@
 								<td>${house.house_title}</td>
 								<td>${house.description }</td>
 			 				   <td><a href="houseDetail.jsp?house_id=${house.house_id }" target="showFrame">查看详情</a></td><!-- href=houseStateServlet?state=tongguoshenghe -->
-			 			        <td>XXXX</td>		 <!-- href=houseStateServlet?state=tongguoshenghe -->
+			 			  <!--       <td>XXXX</td>	 -->	 <!-- href=houseStateServlet?state=tongguoshenghe -->
 						</tr>
 						</c:forEach>
 					</table>

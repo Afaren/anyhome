@@ -21,27 +21,63 @@
 	<meta charset = "utf-8">
 	<title>house  Details</title>
 	<style type="text/css">
+	body 
+	{
+		background-image: url(images/main_picture/bg4.jpg);
+		background-size: 100%;
+		background-repeat: no-repeat;
+
+	}
+	
 	.picture 
+	{
+		margin-top: 3%;
+		margin-left: 13%;
+		position: absolute;
+	}
+	
+	
+	/* .picture 
 	{
 		margin-top: 50px;
 		margin-left: 50px;
 		position: absolute;
-	}
+	} */
 	.picture img
 	{
 		width: 300px;
 		height: 300px;
 	} 
+	
+	.picture img
+	{
+		width: 350px;
+		height: 350px;
+	} 
+	
+	
+	/* 
 	.informain
 	{
 		margin-left: 500px;
 		margin-top:50px;
 	}
+	 */
+	 .informain
+	{
+		margin-left: 46%;
+		margin-top:4%;
+		font-size:24px;
+	}
+	
+	
+	
 	</style>
 </head>
 
 <body>
 
+	<h1 style = "font-family:宋体;color:#000066;margin-top:30px;font-size:42px" align = "center">房屋详细信息</h1>
 
 <!--	house_title
 		description
@@ -127,7 +163,7 @@
 			<input type="hidden" name="host_id" value="<%=houseDet.get(5) %>"/>	
 			<input type="hidden" name="user_id" value="${sessionScope.loginedUser.user_id }" />
 			
-			<input type="submit" name="确认预订" />
+			<input type="submit" name="确认预订" value="确认预订"/>
 		</form>
 	</div> 
 		<!-- <a href="OrderOrperateServlet?">确认预订</a> 这里应该写个btn，submit-->

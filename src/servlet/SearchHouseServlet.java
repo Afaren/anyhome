@@ -64,6 +64,14 @@ public class SearchHouseServlet extends HttpServlet {
 		String end_time = request.getParameter("end_time");
 		String numbers = request.getParameter("numbers");
 
+		// if (start_time == null) {
+		// start_time = new SimpleDateFormat("yyyy-MM-dd").format(new Date(
+		// System.currentTimeMillis()));
+		// }
+		// if (end_time == null) {
+		// end_time = new SimpleDateFormat("yyyy-MM-dd").format(new Date(
+		// System.currentTimeMillis()));
+		// }
 		HouseService houseService = new HouseService();
 		// List<HouseBean> targetHouseList = houseService.getTargetHouse(
 		// whereToG0, start_time, end_time);

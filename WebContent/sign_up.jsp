@@ -75,7 +75,7 @@
   }
   function checkInfo(){
 	    if(passwordFlag == true && phoneNumberFlag == true){
-			  alert('注册成功');
+		//	  alert('注册成功');
 			  return true;
 	    }
 		else{
