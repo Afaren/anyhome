@@ -27,8 +27,8 @@ import entity.UserBean;
 // @WebServlet("/ReleaseHouseServlet2")
 public class ReleaseHouseServlet2_old extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	// private final String filePath = "E:/ahImg";// ÎÄ¼þÉÏ´«Â·¾¶
-	// private final String tempFilePath = "E:/ahTemp";// ÎÄ¼þÁÙÊ±´æ´¢Â·¾¶
+	// private final String filePath = "E:/ahImg";// ï¿½Ä¼ï¿½ï¿½Ï´ï¿½Â·ï¿½ï¿½
+	// private final String tempFilePath = "E:/ahTemp";// ï¿½Ä¼ï¿½ï¿½ï¿½Ê±ï¿½æ´¢Â·ï¿½ï¿½
 	private final String filePath = util.Config.filePath;
 	private final String tempFilePath = util.Config.tempFilePath;
 
@@ -76,7 +76,7 @@ public class ReleaseHouseServlet2_old extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
 		File saveDir = new File(filePath);
-		// Èç¹ûÄ¿Â¼²»´æÔÚ£¬¾Í´´½¨Ä¿Â¼
+		// ï¿½ï¿½ï¿½Ä¿Â¼ï¿½ï¿½ï¿½ï¿½ï¿½Ú£ï¿½ï¿½Í´ï¿½ï¿½ï¿½Ä¿Â¼
 		if (!saveDir.exists()) {
 			saveDir.mkdir();
 		}
@@ -92,22 +92,22 @@ public class ReleaseHouseServlet2_old extends HttpServlet {
 		response.setContentType("text/plain;charset=utf-8");
 		PrintWriter outNet = response.getWriter();
 		// StringBuilder address = new StringBuilder();
-		HouseBean houseBean = new HouseBean();// ¸÷×Ö¶ÎÔÚÁ½¸öº¯ÊýÖÐÌî³ä
+		HouseBean houseBean = new HouseBean();// ï¿½ï¿½ï¿½Ö¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-		// ******************************ÐÞ¸ÄfilePath**********************************
+		// ******************************ï¿½Þ¸ï¿½filePath**********************************
 		String filePath_2 = request.getSession().getServletContext()
 				.getRealPath("/")
 				+ filePath;
 		try {
 			DiskFileItemFactory factory = new DiskFileItemFactory();
-			// ÉèÖÃ»º³åÇø´óÐ¡
+			// ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡
 			factory.setSizeThreshold(4 * 1024);
-			// ÉèÖÃÁÙÊ±Ä¿Â¼
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±Ä¿Â¼
 			factory.setRepository(new File(tempFilePath));
-			// ÎÄ¼þÉÏ´«Æ÷
+			// ï¿½Ä¼ï¿½ï¿½Ï´ï¿½ï¿½ï¿½
 			ServletFileUpload upload = new ServletFileUpload(factory);
 			List<FileItem> items = upload.parseRequest(request);
-			// ÉèÖÃÔÊÐíÉÏ´«µÄÎÄ¼þµÄ×î´ó³ß´ç£¬´Ë´¦Îª4M
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß´ç£¬ï¿½Ë´ï¿½Îª4M
 			upload.setSizeMax(4 * 1024 * 1024);
 
 			Iterator<FileItem> iter = items.iterator();
@@ -115,11 +115,11 @@ public class ReleaseHouseServlet2_old extends HttpServlet {
 			while (iter.hasNext()) {
 				FileItem item = iter.next();
 				if (!item.isFormField()) {
-					// ¸´ºÏÎÄ¼þÓò
+					// ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
 					System.out.println("is upload file");
 					processUploadFile(item, houseBean, outNet);
 				} else {
-					// ÆÕÍ¨Óò
+					// ï¿½ï¿½Í¨ï¿½ï¿½
 					processFormField(item, houseBean, outNet);
 				}
 			}
@@ -131,13 +131,13 @@ public class ReleaseHouseServlet2_old extends HttpServlet {
 		houseBean.setPhoto_path(photo);
 		houseBean.setHost_id(((UserBean) request.getSession(false)
 				.getAttribute("loginedUser")).getUser_id());
-		// ÖÁ´Ë£¬houseBeanÊý¾ÝÉèÖÃÍê±Ï
-		// Ê¹ÓÃserviceÀà½«houseÊý¾ÝÐ´Èëµ½Êý¾Ý¿â
+		// ï¿½ï¿½ï¿½Ë£ï¿½houseBeanï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// Ê¹ï¿½ï¿½serviceï¿½à½«houseï¿½ï¿½ï¿½ï¿½Ð´ï¿½ëµ½ï¿½ï¿½ï¿½Ý¿ï¿½
 		HouseService houseService = new HouseService();
 		if (houseService.releaseHouse(houseBean)) {
 			response.sendRedirect("mainScreen2.jsp");
 		} else {
-			outNet.print("<h1>ÎÞ·¨·¢²¼·¿ÎÝ</h1>");
+			outNet.print("<h1>ï¿½Þ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</h1>");
 
 		}
 
@@ -185,9 +185,9 @@ public class ReleaseHouseServlet2_old extends HttpServlet {
 			PrintWriter outNet) throws Exception {
 		String filename = item.getName();
 		// System.out.println("filename: " + filename);
-		int index = filename.lastIndexOf(".");// »ñÈ¡Î²×º
+		int index = filename.lastIndexOf(".");// ï¿½ï¿½È¡Î²×º
 		filename = houseBean.getHouse_title() + System.currentTimeMillis()
-				+ filename.substring(index, filename.length());// ¸ü¸ÄÍ¼Æ¬Ãû£¬¼ÓÉÏÏµÍ³Ê±¼äÊ¹ÆäÎ¨Ò»
+				+ filename.substring(index, filename.length());// ï¿½ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÏµÍ³Ê±ï¿½ï¿½Ê¹ï¿½ï¿½Î¨Ò»
 		long fileSize = item.getSize();
 		System.out.println("filename: after " + filename);
 
@@ -198,14 +198,14 @@ public class ReleaseHouseServlet2_old extends HttpServlet {
 		System.out.println("after  turn filename: " + filename);
 		File uploaddedFile = new File(filePath + "/" + filename);
 		System.out.println(filePath + "/" + filename);
-		item.write(uploaddedFile);// Ð´ÈëÓ²ÅÌ
+		item.write(uploaddedFile);// Ð´ï¿½ï¿½Ó²ï¿½ï¿½
 
 		outNet.print(filename + "is saved");
 		outNet.print("the size of " + filename + " is " + fileSize + " \r\n");
 		System.out.println("the size of " + filename + " is " + fileSize
 				+ " \r\n");
 		System.out.println(filename + "  " + fileSize);
-		photo = filename;// ÉèÖÃÍ¼Æ¬Ãû
+		photo = filename;// ï¿½ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½
 
 	}
 
