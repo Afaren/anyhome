@@ -9,6 +9,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import util.DbTool;
+import dao.HouseDao;
 import entity.HouseBean;
 
 /**
@@ -26,8 +27,8 @@ public class HouseDaoImpl implements HouseDao {
 	@Override
 	public boolean insertAHouse(HouseBean houseBean) {
 		// TODO Auto-generated method stub
-		// ��ȡ���ݿ�����con��Ԥ����������prst��ִ�����sql_new_house
-		// ���ز������
+		// 锟斤拷取锟斤拷锟捷匡拷锟斤拷锟斤拷con锟斤拷预锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷prst锟斤拷执锟斤拷锟斤拷锟絪ql_new_house
+		// 锟斤拷锟截诧拷锟斤拷锟斤拷锟�
 		// boolean insert_a_house = false;
 		int result = 0;
 		Connection connection = DbTool.getConnection();
@@ -68,17 +69,17 @@ public class HouseDaoImpl implements HouseDao {
 		String sql_queryTargetHouse = "SELECT * FROM anyhome.house WHERE address LIKE ?";
 		try {
 			prst = connection.prepareStatement(sql_queryTargetHouse);
-			prst.setString(1, "%" + targetAddress + "%");// ģ����ѯ
+			prst.setString(1, "%" + targetAddress + "%");// 模锟斤拷锟斤拷询
 			// prst.setString(1, targetAddress);
 			rSet = prst.executeQuery();
 			if (rSet.next()) {
-				System.out.println("有符合的房子");
+				System.out.println("鏈夌鍚堢殑鎴垮瓙");
 			} else {
-				System.out.println("没有符合条件的房子");
+				System.out.println("娌℃湁绗﹀悎鏉′欢鐨勬埧瀛�");
 			}
-			System.out.println("查询符合的房子地址" + targetAddress);
+			System.out.println("鏌ヨ绗﹀悎鐨勬埧瀛愬湴鍧�" + targetAddress);
 			while (rSet.next()) {
-				System.out.println("表示存在符合的房子");
+				System.out.println("琛ㄧず瀛樺湪绗﹀悎鐨勬埧瀛�");
 				HouseBean houseBean = new HouseBean();
 				houseBean.setAddress(rSet.getString("address"));
 				houseBean.setDescription(rSet.getString("description"));
@@ -91,7 +92,7 @@ public class HouseDaoImpl implements HouseDao {
 				System.out.println(houseBean);
 				targetHouseList.add(houseBean);
 			}
-			System.out.println("查询完毕");
+			System.out.println("鏌ヨ瀹屾瘯");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -103,13 +104,13 @@ public class HouseDaoImpl implements HouseDao {
 	public List<HouseBean> getTargetTimeHouses(String start_time,
 			String end_time) {
 
-		// �����漰����״̬�ı仯������ʱ��ε��ж�
+		// 锟斤拷锟斤拷锟芥及锟斤拷锟斤拷状态锟侥变化锟斤拷锟斤拷锟斤拷时锟斤拷蔚锟斤拷卸锟�
 		return null;
 	}
 
 	public static void main(String[] args) {
 		List<HouseBean> list = new HouseDaoImpl()
-				.getTargetAddressHouses("����");
+				.getTargetAddressHouses("锟斤拷锟斤拷");
 
 		Iterator<HouseBean> iterator = list.iterator();
 		for (HouseBean houseBean : list) {

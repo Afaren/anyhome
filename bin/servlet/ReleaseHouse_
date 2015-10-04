@@ -1,0 +1,10 @@
+ReleaseHouseServlet的有关问题
+	1. 获取表单提交的信息  & 会话中保存的 user.host_id
+		插入所有有效信息到HouseBean中
+	2. 写入到数据库中
+		//1. 调用releaseHouseDaoImpl的服务，releaseHouse(house, user_id)
+		1. 调用服务houseService.releaseHouse(house)
+					调用HouseDaoImpl的函数，addHouse(house)在数据库中插入一条记录
+							返回正确插入的标识
+	3. 提示正确写入
+	4. 跳转到房屋管理页面
