@@ -17,9 +17,10 @@ import java.sql.SQLException;
  * 
  */
 public class DbTool {
-	private static final String DB_NAME = "anyhome";// Êý¾Ý¿âµÄÃû×Ö
+	private static final String DB_NAME = "anyhome";// ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	private static final String DB_DRIVER = "com.mysql.jdbc.Driver";
-	private static String DB_URL = "jdbc:mysql://localhost:3306/" + DB_NAME;
+	private static String DB_URL = "jdbc:mysql://127.0.0.1/" + DB_NAME;
+	// private static String DB_URL = "jdbc:mysql://localhost:3306/" + DB_NAME;
 	private static final String DB_USER = "root";
 	private static final String DB_PWD = "chen";
 	private static Connection connection = null;
@@ -27,7 +28,7 @@ public class DbTool {
 	static {
 		try {
 			Class.forName(DB_DRIVER).newInstance();
-			System.out.println("******************ÔØÈëÇý¶¯³ÌÐò");
+			System.out.println("******************ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 		} catch (InstantiationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -47,12 +48,12 @@ public class DbTool {
 		// TODO Auto-generated method stub
 
 		try {
-			connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PWD);// ÕâÌõÓï¾ä²»ÄÜ·ÅÔÚstatic´úÂë¿éÖÐ
+			connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PWD);// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ä²»ï¿½Ü·ï¿½ï¿½ï¿½staticï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 			if (connection != null) {
-				System.out.println("»ñÈ¡Êý¾Ý¿âÁ¬½Ó->DB:   " + DB_NAME);
+				System.out.println("ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½->DB:   " + DB_NAME);
 			} else {
-				System.out.println("ÎÞ·¨»ñÈ¡Êý¾Ý¿âÁ¬½Ó>DB:   " + DB_NAME);
+				System.out.println("ï¿½Þ·ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½>DB:   " + DB_NAME);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -85,7 +86,7 @@ public class DbTool {
 				System.out.println(e.getMessage());
 				e.printStackTrace();
 			}
-			System.out.println("¹Ø±ÕÁ¬½Ó");
+			System.out.println("ï¿½Ø±ï¿½ï¿½ï¿½ï¿½ï¿½");
 
 		}
 	}
@@ -100,7 +101,7 @@ public class DbTool {
 				System.out.println(e.getMessage());
 				e.printStackTrace();
 			}
-			System.out.println("¹Ø±ÕÔ¤±àÒëÓï¾ä");
+			System.out.println("ï¿½Ø±ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 		}
 
 	}
@@ -115,7 +116,7 @@ public class DbTool {
 				System.out.println(e.getMessage());
 				e.printStackTrace();
 			}
-			System.out.println("¹Ø±Õ½á¹û¼¯¶ÔÏó");
+			System.out.println("ï¿½Ø±Õ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 
 		}
 	}
