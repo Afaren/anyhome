@@ -26,8 +26,8 @@ public class HouseDaoImpl implements HouseDao {
 	@Override
 	public boolean insertAHouse(HouseBean houseBean) {
 		// TODO Auto-generated method stub
-		// »ñÈ¡Êı¾İ¿âÁ¬½Ócon£¬Ô¤±àÒëÓï¾ä¶ÔÏóprst£¬Ö´ĞĞÓï¾äsql_new_house
-		// ·µ»Ø²Ù×÷½á¹û
+		// ï¿½ï¿½È¡ï¿½ï¿½ï¿½İ¿ï¿½ï¿½ï¿½ï¿½ï¿½conï¿½ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½prstï¿½ï¿½Ö´ï¿½ï¿½ï¿½ï¿½ï¿½sql_new_house
+		// ï¿½ï¿½ï¿½Ø²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		// boolean insert_a_house = false;
 		int result = 0;
 		Connection connection = DbTool.getConnection();
@@ -65,13 +65,20 @@ public class HouseDaoImpl implements HouseDao {
 		Connection connection = DbTool.getConnection();
 		PreparedStatement prst = null;
 		ResultSet rSet = null;
-		String sql_queryTargetHouse = "SELECT * FROM HOUSE WHERE address LIKE ?";
+		String sql_queryTargetHouse = "SELECT * FROM anyhome.house WHERE address LIKE ?";
 		try {
 			prst = connection.prepareStatement(sql_queryTargetHouse);
+			prst.setString(1, "%" + targetAddress + "%");// Ä£ï¿½ï¿½ï¿½ï¿½Ñ¯
 			// prst.setString(1, targetAddress);
-			prst.setString(1, "%" + targetAddress + "%");// Ä£ºı²éÑ¯
 			rSet = prst.executeQuery();
+			if (rSet.next()) {
+				System.out.println("æœ‰ç¬¦åˆçš„æˆ¿å­");
+			} else {
+				System.out.println("æ²¡æœ‰ç¬¦åˆæ¡ä»¶çš„æˆ¿å­");
+			}
+			System.out.println("æŸ¥è¯¢ç¬¦åˆçš„æˆ¿å­åœ°å€" + targetAddress);
 			while (rSet.next()) {
+				System.out.println("è¡¨ç¤ºå­˜åœ¨ç¬¦åˆçš„æˆ¿å­");
 				HouseBean houseBean = new HouseBean();
 				houseBean.setAddress(rSet.getString("address"));
 				houseBean.setDescription(rSet.getString("description"));
@@ -81,10 +88,11 @@ public class HouseDaoImpl implements HouseDao {
 				houseBean.setNote(rSet.getString("note"));
 				houseBean.setPhoto_path(rSet.getString("photo_path"));
 				houseBean.setPrice(rSet.getInt("price"));
+				System.out.println(houseBean);
 				targetHouseList.add(houseBean);
 			}
+			System.out.println("æŸ¥è¯¢å®Œæ¯•");
 		} catch (SQLException e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		}
 
@@ -95,12 +103,13 @@ public class HouseDaoImpl implements HouseDao {
 	public List<HouseBean> getTargetTimeHouses(String start_time,
 			String end_time) {
 
-		// ÕâÀïÉæ¼°·¿Îİ×´Ì¬µÄ±ä»¯£¬»¹ÓĞÊ±¼ä¶ÎµÄÅĞ¶Ï
+		// ï¿½ï¿½ï¿½ï¿½ï¿½æ¼°ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½Ä±ä»¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½Îµï¿½ï¿½Ğ¶ï¿½
 		return null;
 	}
 
 	public static void main(String[] args) {
-		List<HouseBean> list = new HouseDaoImpl().getTargetAddressHouses("³±Ñô");
+		List<HouseBean> list = new HouseDaoImpl()
+				.getTargetAddressHouses("ï¿½ï¿½ï¿½ï¿½");
 
 		Iterator<HouseBean> iterator = list.iterator();
 		for (HouseBean houseBean : list) {
