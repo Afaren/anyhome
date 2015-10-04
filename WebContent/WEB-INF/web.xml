@@ -4,12 +4,12 @@
   <welcome-file-list>
     <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>
-  <filter>
+  <!-- <filter>
     <filter-name>ReleaseHouseFilter</filter-name>
     <filter-class>filter.ReleaseHouseFilter</filter-class>
-  </filter>
-  <filter-mapping>
+  </filter> -->
+ <!--  <filter-mapping>
     <filter-name>ReleaseHouseFilter</filter-name>
     <url-pattern>/releaseHouse.jsp</url-pattern>
-  </filter-mapping>
+  </filter-mapping> -->
 </web-app>
