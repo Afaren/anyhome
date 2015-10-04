@@ -2,7 +2,13 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Program Files/Apache Software Foundation/Tomcat 7.0/lib/servlet-api.jar" sourcepath="C:/Program Files/Apache Software Foundation/Tomcat 7.0/lib/tomcat-util.jar"/>
-	<classpathentry kind="lib" path="D:/西安邮电大学13级实训20150823/shortRent项目相关jar包/shortRent项目相关jar包/commons-fileupload-1.3.1.jar"/>
-	<classpathentry kind="output" path="bin"/>
+	<classpathentry kind="lib" path="/home/chen/Java/tomcat/lib/tomcat-api.jar"/>
+	<classpathentry kind="lib" path="/usr/local/apache-tomcat-7.0.64/lib/jsp-api.jar"/>
+	<classpathentry kind="lib" path="/usr/local/apache-tomcat-7.0.64/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="/home/chen/Java/anyhome_v1/WebContent/WEB-INF/lib/commons-fileupload-1.3.1.jar"/>
+	<classpathentry kind="lib" path="/home/chen/Java/anyhome_v1/WebContent/WEB-INF/lib/commons-io-2.2.jar"/>
+	<classpathentry kind="lib" path="/home/chen/Java/anyhome_v1/WebContent/WEB-INF/lib/mysql-connector-java-5.1.28.jar"/>
+	<classpathentry kind="lib" path="/home/chen/Java/anyhome_v1/WebContent/WEB-INF/lib/taglibs-standard-impl-1.2.5.jar"/>
+	<classpathentry kind="lib" path="/home/chen/Java/anyhome_v1/WebContent/WEB-INF/lib/taglibs-standard-spec-1.2.5.jar"/>
+	<classpathentry kind="output" path="WebContent/WEB-INF/classes"/>
 </classpath>
